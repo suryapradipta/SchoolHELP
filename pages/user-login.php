@@ -29,12 +29,24 @@ if(isset($_POST['username']) != NULL){
     
         $adminLogin = ("SELECT * FROM schooladmin WHERE id='". $_SESSION['id'] . "'"); // get detail admin user
             $dataAdmin = $connect->query($adminLogin);
-            while($row = $dataAdmin->fetch_assoc()) {
-                $_SESSION['staffid'] = $row["staffid"];
-                $_SESSION['position'] = $row["position"];
-                $_SESSION['id'] = $row["id"];
-            
-                $_SESSION['loginas'] = 'administrator';
+            if($dataAdmin == NULL) {
+                while($row = $dataAdmin->fetch_assoc()) {
+                    $_SESSION['staffid'] = $row["staffid"];
+                    $_SESSION['position'] = $row["position"];
+                    $_SESSION['id'] = $row["id"];
+                
+                    $_SESSION['loginas'] = 'administrator';
+                }
+
+            } else {
+                $volunteerLogin = ("SELECT * FROM volunteer WHERE id='". $_SESSION['id'] . "'"); // get detail admin user
+                $dataVolunteer = $connect->query($volunteerLogin);
+                while($row = $dataVolunteer->fetch_assoc()) {
+                    $_SESSION['dateofbirth'] = $row["dateofbirth"];
+                    $_SESSION['occupation'] = $row["occupation"];
+                
+                    $_SESSION['loginas'] = 'volunteer';
+                }
             }
 
             if($_SESSION['loginas'] == 'administrator') {
