@@ -19,7 +19,7 @@ if(isset($_POST['username']) != NULL){
     if($result ->num_rows > 0){
 
         while($row = $result -> fetch_assoc()) {
-            $_SESSION['id'] = $row["id"];
+            $_SESSION['userid'] = $row["userid"];
             $_SESSION['fullname'] = $row["fullname"];
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
@@ -27,19 +27,22 @@ if(isset($_POST['username']) != NULL){
 
         $_SESSION['username'] = $username;
     
-        $adminLogin = ("SELECT * FROM schooladmin WHERE id='". $_SESSION['id'] . "'"); // get detail admin user
-            $dataAdmin = $connect->query($adminLogin);
-            if($dataAdmin == NULL) {
+        $adminLogin = ("SELECT * FROM schooladmin WHERE userid='". $_SESSION['userid'] . "'"); // get detail admin user
+        $dataAdmin = $connect->query($adminLogin);
+
+        $checkUser   = mysqli_num_rows($dataAdmin);
+
+            if($checkUser > 0) {
                 while($row = $dataAdmin->fetch_assoc()) {
                     $_SESSION['staffid'] = $row["staffid"];
                     $_SESSION['position'] = $row["position"];
-                    $_SESSION['id'] = $row["id"];
+                    $_SESSION['userid'] = $row["userid"];
                 
                     $_SESSION['loginas'] = 'administrator';
                 }
 
             } else {
-                $volunteerLogin = ("SELECT * FROM volunteer WHERE id='". $_SESSION['id'] . "'"); // get detail admin user
+                $volunteerLogin = ("SELECT * FROM volunteer WHERE userid='". $_SESSION['userid'] . "'"); // get detail admin user
                 $dataVolunteer = $connect->query($volunteerLogin);
                 while($row = $dataVolunteer->fetch_assoc()) {
                     $_SESSION['dateofbirth'] = $row["dateofbirth"];
