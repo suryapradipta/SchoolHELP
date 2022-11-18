@@ -26,21 +26,26 @@
                                     <h4 class="text-dark mb-4">Welcome to School HELP!</h4>
                                 </div>
 
+                                <!--LOGIN VALIDATION-->
                                 <?php
-                                if(isset($_GET['message'])){
-                                    if($_GET['message'] == "fail"){
+                                if (isset($_GET['message'])) {
+                                    if ($_GET['message'] == "fail") {
                                         echo "<center><div class='alert alert-danger' role='alert'>Username or Password is Wrong!</div><center>";
                                     }
                                 }
                                 ?>
+                                <!--LOGIN VALIDATION-->
 
+
+                                <!--FORM LOGIN START-->
                                 <form class="user" action="pages/user-login.php" method="POST">
                                     <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Enter Username" name="username" required="required"></div>
-                                    <div class="mb-3"><input class="form-control form-control-user" type="password"  placeholder="Password" name="password" required="required"></div>
-                                    <div class="mb-3"></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
+                                    <div class="mb-3"><input class="form-control form-control-user" type="password" placeholder="Password" name="password" required="required"></div>
+                                    <button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
                                     <hr>
-                                    <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button">  Register as Volunteer</a>
+                                    <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button">Register as Volunteer</a>
                                 </form>
+                                <!--FORM LOGIN END-->
 
                             </div>
                         </div>
