@@ -15,7 +15,7 @@ if($_SESSION['loginas'] != 'administrator') {
     <title>Table - Brand</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="../assets/bootstrap/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/datatables.css">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
@@ -105,13 +105,18 @@ if($_SESSION['loginas'] != 'administrator') {
                         </div>
                     </div>
                     <hr>
-                    <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="margin-bottom: 10px;">Register as</button>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown"
+                                type="button" style="margin-bottom: 10px;">Register as
+                        </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">School</a>
+                            <a class="dropdown-item" href="#" id="active-display">School</a>
                             <a class="dropdown-item" href="#">School Administrator</a>
 
                         </div>
                     </div>
+
+
                     <div class="card shadow">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold">School Form</p>
@@ -122,8 +127,13 @@ if($_SESSION['loginas'] != 'administrator') {
                             <div class="input-group"><input class="form-control" type="text"></div><button class="btn btn-primary" type="button" style="background: var(--bs-green);margin-top: 20px;">Submit</button>
                         </div>
                     </div>
+
+
                     <hr>
-                    <div class="card shadow">
+
+
+
+                    <div class="card shadow" style="display: none" id="administrator-form">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 fw-bold">School Administrator Form</p>
                         </div>
@@ -139,6 +149,8 @@ if($_SESSION['loginas'] != 'administrator') {
                     </div>
                 </div>
             </div>
+
+
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
                     <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
@@ -146,6 +158,8 @@ if($_SESSION['loginas'] != 'administrator') {
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
+
+
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/bs-init.js"></script>
     <script src="../assets/js/theme.js"></script>
@@ -158,6 +172,9 @@ if($_SESSION['loginas'] != 'administrator') {
             scrollY: 270,
             scrollX: true,
         });
+        $('#active-display').click(function (){
+            $('#administrator-form').show();
+        })
     </script>
 </body>
 
