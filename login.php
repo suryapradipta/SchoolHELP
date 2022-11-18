@@ -39,6 +39,7 @@
                                     <div class="mb-3"><input class="form-control form-control-user" type="password"  placeholder="Password" name="password" required="required"></div>
                                     <div class="mb-3"></div><button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
                                     <hr>
+                                    <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button">  Register as Volunteer</a>
                                 </form>
 
                             </div>
