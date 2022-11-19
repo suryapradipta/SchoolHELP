@@ -33,11 +33,11 @@ $sql2 = mysqli_query($connect, "update schooladmin set position='$position',
             where staffid='$staffid'");
 
 if ($sql1 and $sql2) {
-    echo "SUCCESS!!!!";
-//    header("location:../profile.php?message=update-profile-success");
+//    echo "SUCCESS!!!!";
+    header("location:../profile.php?message=update-profile-success");
 } else {
-    echo 'FAILED!!!!!';
-//    header("location:../profile.php?message=update-profile-fail");
+//    echo 'FAILED!!!!!';
+    header("location:../profile.php?message=update-profile-fail");
 }
 
 
