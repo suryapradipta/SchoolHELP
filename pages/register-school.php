@@ -78,7 +78,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                             class="dropdown-item" href="#"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="../logout.php"><i
+                                    <a class="dropdown-item" href="logout.php"><i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
                                 </div>
                             </div>
@@ -101,6 +101,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                         <table id="schoolinfotable" class="table overflow-auto" style="width: 100%;">
                             <thead>
                             <tr>
+                                <th>School ID</th>
                                 <th>School Name</th>
                                 <th>City</th>
                                 <th>Address</th>
@@ -109,13 +110,14 @@ if ($_SESSION['loginas'] != 'administrator') {
                             <tbody>
 
                             <?php
-                            include "connection.php";
+                            include "action/connection.php";
                             $query = ("SELECT * FROM `school`");
                             $result = mysqli_query($connect, $query);
 
                             if ($result->num_rows > 0) {
                                 while ($row = $result->fetch_assoc()) {
                                     echo '<tr>';
+                                    echo '<td>' . $row["schoolid"] . '</td>';
                                     echo '<td>' . $row["schoolname"] . '</td>';
                                     echo '<td>' . $row["city"] . '</td>';
                                     echo '<td>' . $row["address"] . '</td>';
@@ -154,25 +156,40 @@ if ($_SESSION['loginas'] != 'administrator') {
 
                     <!--FORM START-->
                     <div class="card-body">
+
                         <?php
-                        if(isset($_GET['message'])){
-                            if($_GET['message'] == "invalidVaccine"){
-                                echo "<div class='alert alert-danger' role='alert'>Invalid Vaccine ID</div>";
-                            }
-                            else if($_GET['message'] == "fail")
-                            {
+                        if (isset($_GET['message'])) {
+                            if ($_GET['message'] == "success") {
+                                echo "<div class='alert alert-success' role='alert'>Data has successfully saved!</div>";
+                            } else if ($_GET['message'] == "invalidschool") {
+                                echo "<div class='alert alert-danger' role='alert'>School already registered</div>";
+                            } else if ($_GET['message'] == "fail") {
                                 echo "<div class='alert alert-danger' role='alert'>Error!!! The data can't be saved</div>";
                             }
                         }
                         ?>
 
-                        <label class="form-label">School Name</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
-                        <label class="form-label" style="margin-top: 15px;">School Address</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
-                        <label class="form-label" style="margin-top: 15px;">City</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
-                        <button class="btn btn-primary" type="button" style="background: var(--bs-green);margin-top: 20px;">Submit</button>
+
+
+
+                        <form method="post" action="action/register-school-action.php">
+                            <label class="form-label">School Name</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="schoolname">
+                            </div>
+
+                            <label class="form-label" style="margin-top: 15px;">Address</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="address">
+                            </div>
+
+                            <label class="form-label" style="margin-top: 15px;">City</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="city">
+                            </div>
+
+                            <button class="btn btn-primary" type="submit" style="background: var(--bs-green);margin-top: 20px;">Submit</button>
+                        </form>
                     </div>
                     <!--FORM END-->
                 </div>
@@ -206,7 +223,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                         <label class="form-label" style="margin-top: 15px;">Position</label>
                         <div class="input-group"><input class="form-control" type="text"></div>
 
-                        <button class="btn btn-primary" type="button"
+                        <button class="btn btn-primary" type="submit"
                                 style="background: var(--bs-green);margin-top: 20px;">Submit
                         </button>
                     </div>
