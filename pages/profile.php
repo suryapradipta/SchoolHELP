@@ -109,72 +109,126 @@ if ($_SESSION['loginas'] != 'administrator') {
                         }
                         ?>
 
-                        <form method="post" action="action/profile-action.php">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="username">
-                                            <strong>Full Name</strong>
-                                        </label>
-                                        <input type="hidden" name="id" value="<?php echo $_SESSION ['userid'] ?>">
-                                        <input class="form-control" type="text" id="fullname"
-                                               placeholder="Full Name" name="fullname" value="<?php echo $_SESSION ['fullname'] ?>">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="email">
-                                            <strong>Email Address</strong>
-                                        </label>
-                                        <input class="form-control" type="email" id="email"
-                                               placeholder="user@example.com" name="email"
-                                               value="<?php echo $_SESSION ['email'] ?>">
-                                    </div>
-                                </div>
-                            </div>
+                        <?php
+                        include 'action/connection.php';
+
+                        $userid = $_SESSION['userid'];
+                        $staffid = $_SESSION['staffid'];
 
 
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="phone">
-                                            <strong>Phone</strong>
-                                        </label>
-                                        <input class="form-control" type="number" id="phone"
-                                               placeholder="0832347593" name="phone"
-                                               value="<?php echo $_SESSION ['phone'] ?>">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="staffid">
-                                            <strong>Staff ID</strong>
-                                            <br>
-                                        </label>
-                                        <input class="form-control" type="text" id="last_name"
-                                               placeholder="1" name="staffid" value="<?php echo $_SESSION ['staffid'] ?>">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" for="position">
-                                            <strong>Position</strong>
-                                        </label>
-                                        <input class="form-control" type="text" id="position"
-                                               placeholder="School Administrator" name="position"
-                                               value="<?php echo $_SESSION ['position'] ?>">
-                                    </div>
-                                </div>
-                            </div>
+                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
+                        $sql2 = mysqli_query($connect, "select * from schooladmin where staffid='$staffid'");
+                        while ($datauser = mysqli_fetch_array($sql)) {
+                            while ($dataadmin = mysqli_fetch_array($sql2)) {
+                                ?>
+                                <form method="post" action="action/profile-action.php">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="username">
+                                                    <strong>Full Name</strong>
+                                                </label>
+                                                <input type="hidden"
+                                                       name="userid"
+                                                       value="<?php echo $datauser['userid']; ?>">
 
-                            <div class="mb-3">
-                                <button class="btn btn-primary btn-sm" type="submit" style="background: var(--bs-success);">Save Settings</button>
+                                                <input class="form-control"
+                                                       type="text" id="fullname"
+                                                       placeholder="Full Name"
+                                                       name="fullname"
+                                                       value="<?php echo $datauser['fullname']; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="email">
+                                                    <strong>Email Address</strong>
+                                                </label>
+
+                                                <input class="form-control"
+                                                       type="email"
+                                                       id="email"
+                                                       placeholder="user@example.com"
+                                                       name="email"
+                                                       value="<?php echo $datauser['email']; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="phone">
+                                                    <strong>Phone</strong>
+                                                </label>
+                                                <input class="form-control"
+                                                       type="number"
+                                                       id="phone"
+                                                       placeholder="0000000000"
+                                                       name="phone"
+                                                       value="<?php echo $datauser['phone']; ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="staffid">
+                                                    <strong>Staff ID</strong>
+                                                    <br>
+                                                </label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       id="staffid"
+                                                       placeholder="000"
+                                                       name="staffid"
+                                                       value="<?php echo $dataadmin['staffid']; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="mb-3">
+                                                <label class="form-label" for="position">
+                                                    <strong>Position</strong>
+                                                </label>
+                                                <input class="form-control"
+                                                       type="text"
+                                                       id="position"
+                                                       placeholder="Position"
+                                                       name="position"
+                                                       value="<?php echo $dataadmin['position']; ?>">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary btn-sm"
+                                                type="submit"
+                                                style="background: var(--bs-success);">
+                                            Save Settings
+                                        </button>
+                                    </div>
+                                </form>
+
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+
+                <div class="card shadow" style="margin-top: 30px;">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">Change Password</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row mb-3">
+                                <div class="col-sm-6 mb-3 mb-sm-0"><input id="examplePasswordInput" class="form-control form-control-user" type="password" placeholder="Password" name="password" /></div>
+                                <div class="col-sm-6"><input id="exampleRepeatPasswordInput" class="form-control form-control-user" type="password" placeholder="Repeat Password" name="password_repeat" /></div>
                             </div>
+                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" style="background: var(--bs-green);">Save Settings</button></div>
                         </form>
-
-
                     </div>
                 </div>
             </div>

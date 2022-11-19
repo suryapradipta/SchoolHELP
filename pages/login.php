@@ -39,11 +39,32 @@
 
                                 <!--FORM LOGIN START-->
                                 <form class="user" action="action/login-action.php" method="POST">
-                                    <div class="mb-3"><input class="form-control form-control-user" type="text" placeholder="Enter Username" name="username" required="required"></div>
-                                    <div class="mb-3"><input class="form-control form-control-user" type="password" placeholder="Password" name="password" required="required"></div>
-                                    <button class="btn btn-primary d-block btn-user w-100" type="submit">Login</button>
+                                    <div class="mb-3">
+                                        <input class="form-control form-control-user"
+                                               type="text"
+                                               placeholder="Enter Username"
+                                               name="username"
+                                               required="required">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input class="form-control form-control-user"
+                                               type="password"
+                                               placeholder="Password"
+                                               name="password"
+                                               required="required"></div>
+                                    <button class="btn btn-primary d-block btn-user w-100"
+                                            type="submit">
+                                        Login
+                                    </button>
+
                                     <hr>
-                                    <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button" href="register-volunteer.php">Register as Volunteer</a>
+
+                                    <a class="btn btn-primary d-block btn-google btn-user w-100 mb-2"
+                                       role="button"
+                                       href="register-volunteer.php">
+                                        Register as Volunteer
+                                    </a>
+
                                 </form>
                                 <!--FORM LOGIN END-->
 

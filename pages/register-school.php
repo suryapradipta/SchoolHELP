@@ -166,7 +166,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                             if ($_GET['message'] == "success") {
                                 echo "<div class='alert alert-success' role='alert'>School has successfully saved!</div>";
                             } else if ($_GET['message'] == "invalidschool") {
-                                echo "<div class='alert alert-danger' role='alert'>School already registered</div>";
+                                echo "<div class='alert alert-danger' role='alert'>School already registered, try continue to create school administrator?</div>";
 
                             } else if ($_GET['message'] == "fail") {
                                 echo "<div class='alert alert-danger' role='alert'>Error!!! The school can't be saved</div>";
@@ -177,17 +177,26 @@ if ($_SESSION['loginas'] != 'administrator') {
                         <form method="post" action="action/register-school-action.php">
                             <label class="form-label">School Name</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="schoolname">
+                                <input class="form-control"
+                                       type="text"
+                                       name="schoolname"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Address</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="address">
+                                <input class="form-control"
+                                       type="text"
+                                       name="address"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">City</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="city">
+                                <input class="form-control"
+                                       type="text"
+                                       name="city"
+                                       required="required">
                             </div>
 
                             <button class="btn btn-primary" type="submit" style="background: var(--bs-green);margin-top: 20px;">Submit</button>
@@ -197,7 +206,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                 </div>
                 <!--SCHOOL FORM END-->
 
-                <hr>
+
 
                 <!--SCHOOL ADMINISTRATOR FORM INPUT START-->
                 <div class="card shadow" style="display: none" id="administrator-form">
@@ -223,42 +232,66 @@ if ($_SESSION['loginas'] != 'administrator') {
 
                             <label class="form-label">School ID</label>
                             <div class="input-group">
-                                <input class="form-control" type="number" name="schoolid">
+                                <input class="form-control"
+                                       type="number"
+                                       name="schoolid"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Username</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="username">
+                                <input class="form-control"
+                                       type="text"
+                                       name="username"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Password</label>
                             <div class="input-group">
-                                <input class="form-control" type="password" name="password">
+                                <input class="form-control"
+                                       type="password"
+                                       name="password"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Full Name</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="fullname">
+                                <input class="form-control"
+                                       type="text"
+                                       name="fullname"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Email</label>
                             <div class="input-group">
-                                <input class="form-control" type="email" name="email"/>
+                                <input class="form-control"
+                                       type="email"
+                                       name="email"
+                                       required="required"/>
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Phone</label>
                             <div class="input-group">
-                                <input class="form-control" type="number" name="phone">
+                                <input class="form-control"
+                                       type="number"
+                                       name="phone"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Staff ID</label>
                             <div class="input-group">
-                                <input class="form-control" type="number" name="staffid">
+                                <input class="form-control"
+                                       type="number"
+                                       name="staffid"
+                                       required="required">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Position</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="position">
+                                <input class="form-control"
+                                       type="text"
+                                       name="position"
+                                       required="required">
                             </div>
 
                             <button class="btn btn-primary" type="submit"
@@ -368,16 +401,20 @@ if ($_SESSION['loginas'] != 'administrator') {
             $('#school-form').show();
         }
     })
+
+
 </script>
 <!--HIDE AND SHOW FORM END-->
 
 <!--SHOW MODAL WHILE INVALID-->
+<!--NOT YET WORKED-->
 <script>
     if(document.getElementById("exampleModal")){
         var exmodal = new bootstrap.Modal(document.getElementById("exampleModal"));
         exmodal.show();
     }
 </script>
+
 
 </body>
 
