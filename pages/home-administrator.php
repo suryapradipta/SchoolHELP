@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if($_SESSION['loginas'] != 'administrator') {
+if ($_SESSION['loginas'] != 'administrator') {
     header("location:../login.php?message=fail");
 }
 ?>
@@ -30,20 +30,25 @@ if($_SESSION['loginas'] != 'administrator') {
                 <li class="nav-item"><a class="nav-link active" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
             </ul>
-            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            <div class="text-center d-none d-md-inline">
+                <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
+            </div>
         </div>
     </nav>
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
             <!--HEADER START-->
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
-                <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                     <ul class="navbar-nav flex-nowrap ms-auto">
                         <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
                             <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="me-auto navbar-search w-100">
                                     <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
-                                        <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -52,20 +57,54 @@ if($_SESSION['loginas'] != 'administrator') {
 
 
                         <!--PROFILE START-->
-                        <li class="nav-item dropdown no-arrow">
-                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small"> <?php echo $_SESSION ['fullname'] ?></span><img
-                                            class="border rounded-circle img-profile"
-                                            src="../assets/img/avatars/avatar1.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
-                                            class="dropdown-item" href="#"><i
-                                                class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="logout.php"><i
-                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                        <?php
+                        include 'action/connection.php';
+
+                        $userid = $_SESSION['userid'];
+                        $staffid = $_SESSION['staffid'];
+
+
+                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
+                        while ($datauser = mysqli_fetch_array($sql)) {
+                            ?>
+
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link"
+                                       aria-expanded="false"
+                                       data-bs-toggle="dropdown"
+                                       href="#">
+                                    <span class="d-none d-lg-inline me-2 text-gray-600 small">
+                                        <?php echo $datauser['fullname']; ?>
+                                    </span>
+                                        <img class="border rounded-circle img-profile"
+                                             src="../assets/img/avatars/avatar1.jpeg">
+                                    </a>
+
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <a class="dropdown-item" href="profile.php">
+                                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
+
+
+                                        <!--LOG OUT START-->
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                            Logout
+                                        </a>
+                                        <!--LOG OUT END-->
+
+
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                            <?php
+                        }
+
+                        ?>
                         <!--PROFILE END-->
 
 
@@ -77,7 +116,8 @@ if($_SESSION['loginas'] != 'administrator') {
             <div class="container-fluid">
 
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report</a>
+                    <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate
+                        Report</a>
                 </div>
 
                 <div class="row">
@@ -119,7 +159,8 @@ if($_SESSION['loginas'] != 'administrator') {
                                             </div>
                                             <div class="col">
                                                 <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="visually-hidden">50%</span></div>
+                                                    <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span
+                                                                class="visually-hidden">50%</span></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -153,12 +194,36 @@ if($_SESSION['loginas'] != 'administrator') {
             </div>
         </footer>
         <!--FOOTER END-->
-    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="logoutmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure want to log out?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Select "Logout" below if you are ready to.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="logout.php">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="../assets/js/chart.min.js"></script>
 <script src="../assets/js/bs-init.js"></script>
 <script src="../assets/js/theme.js"></script>
+<!--MODAL-->
+<script src="../assets/js/modal.js"></script>
 </body>
 
 </html>
