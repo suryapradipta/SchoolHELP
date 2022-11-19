@@ -97,45 +97,95 @@ if ($_SESSION['loginas'] != 'administrator') {
                         <p class="text-primary m-0 fw-bold">User Settings</p>
                     </div>
                     <div class="card-body">
-                        <form>
+
+
+                        <?php
+                        if (isset($_GET['message'])) {
+                            if ($_GET['message'] == "success") {
+                                echo "<div class='alert alert-success' role='alert'>Profile has successfully updated!</div>";
+                            } else if ($_GET['message'] == "fail") {
+                                echo "<div class='alert alert-danger' role='alert'>Error! The profile can't updated</div>";
+                            }
+                        }
+                        ?>
+
+                        <form method="post" action="action/profile-action.php">
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="username"><strong>Full Name</strong></label><input class="form-control" type="text" id="username"
-                                                                                                                                        placeholder="fullname" name="username"></div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="username">
+                                            <strong>Full Name</strong>
+                                        </label>
+                                        <input type="hidden" name="id" value="<?php echo $_SESSION ['userid'] ?>">
+                                        <input class="form-control" type="text" id="fullname"
+                                               placeholder="Full Name" name="fullname" value="<?php echo $_SESSION ['fullname'] ?>">
+                                    </div>
                                 </div>
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email"
-                                                                                                                                         placeholder="user@example.com" name="email"></div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="email">
+                                            <strong>Email Address</strong>
+                                        </label>
+                                        <input class="form-control" type="email" id="email"
+                                               placeholder="user@example.com" name="email"
+                                               value="<?php echo $_SESSION ['email'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="phone">
+                                            <strong>Phone</strong>
+                                        </label>
+                                        <input class="form-control" type="number" id="phone"
+                                               placeholder="0832347593" name="phone"
+                                               value="<?php echo $_SESSION ['phone'] ?>">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="staffid">
+                                            <strong>Staff ID</strong>
+                                            <br>
+                                        </label>
+                                        <input class="form-control" type="text" id="last_name"
+                                               placeholder="1" name="staffid" value="<?php echo $_SESSION ['staffid'] ?>">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Phone</strong></label><input class="form-control" type="number" id="phone"></div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Staff ID</strong><br></label><input class="form-control" type="text" id="last_name"
-                                                                                                                                            placeholder="Doe" name="last_name"></div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Position</strong></label><input class="form-control" type="text" id="first_name-1"
-                                                                                                                                         placeholder="John" name="first_name"></div>
+                                    <div class="mb-3">
+                                        <label class="form-label" for="position">
+                                            <strong>Position</strong>
+                                        </label>
+                                        <input class="form-control" type="text" id="position"
+                                               placeholder="School Administrator" name="position"
+                                               value="<?php echo $_SESSION ['position'] ?>">
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="mb-3">
                                 <button class="btn btn-primary btn-sm" type="submit" style="background: var(--bs-success);">Save Settings</button>
                             </div>
                         </form>
+
+
                     </div>
                 </div>
             </div>
         </div>
+        <!--FOOTER START-->
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+                <div class="text-center my-auto copyright"><span>Copyright © SCHOOLHELP 2022</span></div>
             </div>
         </footer>
+        <!--FOOTER END-->
     </div>
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </div>

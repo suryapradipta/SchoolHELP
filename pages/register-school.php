@@ -167,6 +167,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                 echo "<div class='alert alert-success' role='alert'>School has successfully saved!</div>";
                             } else if ($_GET['message'] == "invalidschool") {
                                 echo "<div class='alert alert-danger' role='alert'>School already registered</div>";
+
                             } else if ($_GET['message'] == "fail") {
                                 echo "<div class='alert alert-danger' role='alert'>Error!!! The school can't be saved</div>";
                             }
@@ -208,18 +209,24 @@ if ($_SESSION['loginas'] != 'administrator') {
 
                         <?php
                         if (isset($_GET['message'])) {
-                            if ($_GET['message'] == "success") {
+                            if ($_GET['message'] == "register-administrator-success") {
                                 echo "<div class='alert alert-success' role='alert'>User has successfully saved!</div>";
-                            } else if ($_GET['message'] == "invalidschool") {
+                            } else if ($_GET['message'] == "invaliduser") {
                                 echo "<div class='alert alert-danger' role='alert'>User already registered</div>";
-                            } else if ($_GET['message'] == "fail") {
-                                echo "<div class='alert alert-danger' role='alert'>Error!!! The user can't be saved</div>";
+                            } else if ($_GET['message'] == "register-administrator-fail") {
+                                echo "<div class='alert alert-danger' role='alert'>Error! User can't be saved</div>";
                             }
                         }
                         ?>
 
                         <form method="post" action="action/register-administrator-action.php">
-                            <label class="form-label">Username</label>
+
+                            <label class="form-label">School ID</label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" name="schoolid">
+                            </div>
+
+                            <label class="form-label" style="margin-top: 15px;">Username</label>
                             <div class="input-group">
                                 <input class="form-control" type="text" name="username">
                             </div>
@@ -246,7 +253,7 @@ if ($_SESSION['loginas'] != 'administrator') {
 
                             <label class="form-label" style="margin-top: 15px;">Staff ID</label>
                             <div class="input-group">
-                                <input class="form-control" type="text" name="staffid">
+                                <input class="form-control" type="number" name="staffid">
                             </div>
 
                             <label class="form-label" style="margin-top: 15px;">Position</label>
@@ -297,6 +304,32 @@ if ($_SESSION['loginas'] != 'administrator') {
     </div>
 </div>
 
+<!-- Modal -->
+<?php if(isset($_GET['invalidschool']) != NULL) { ?>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+}
+?>
+
+
+
+
 <!--MODAL-->
 <script src="../assets/js/modal.js"></script>
 
@@ -337,6 +370,14 @@ if ($_SESSION['loginas'] != 'administrator') {
     })
 </script>
 <!--HIDE AND SHOW FORM END-->
+
+<!--SHOW MODAL WHILE INVALID-->
+<script>
+    if(document.getElementById("exampleModal")){
+        var exmodal = new bootstrap.Modal(document.getElementById("exampleModal"));
+        exmodal.show();
+    }
+</script>
 
 </body>
 
