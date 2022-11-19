@@ -7,12 +7,12 @@ if ($_SESSION['loginas'] != 'administrator') {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>Profile - Brand</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="../assets/fonts/fontawesome-all.min.css">
@@ -27,7 +27,7 @@ if ($_SESSION['loginas'] != 'administrator') {
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"><a class="nav-link active" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline">
@@ -63,7 +63,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                             class="border rounded-circle img-profile"
                                             src="../assets/img/avatars/avatar1.jpeg"></a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                                    <a class="dropdown-item" href="profile.php">
+                                    <a class="dropdown-item" href="#">
                                         <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
                                         Profile
                                     </a>
@@ -91,86 +91,51 @@ if ($_SESSION['loginas'] != 'administrator') {
             <!--HEADER END-->
 
             <div class="container-fluid">
-
-                <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate
-                        Report</a>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-primary py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>$40,000</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
-                                </div>
-                            </div>
-                        </div>
+                <h3 class="text-dark mb-4">Profile</h3>
+                <div class="card shadow">
+                    <div class="card-header py-3">
+                        <p class="text-primary m-0 fw-bold">User Settings</p>
                     </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-success py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="username"><strong>Full Name</strong></label><input class="form-control" type="text" id="username"
+                                                                                                                                        placeholder="fullname" name="username"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="email"><strong>Email Address</strong></label><input class="form-control" type="email" id="email"
+                                                                                                                                         placeholder="user@example.com" name="email"></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-info py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Tasks</span></div>
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-auto">
-                                                <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span
-                                                                class="visually-hidden">50%</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Phone</strong></label><input class="form-control" type="number" id="phone"></div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="last_name"><strong>Staff ID</strong><br></label><input class="form-control" type="text" id="last_name"
+                                                                                                                                            placeholder="Doe" name="last_name"></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-warning py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Pending Requests</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3"><label class="form-label" for="first_name"><strong>Position</strong></label><input class="form-control" type="text" id="first_name-1"
+                                                                                                                                         placeholder="John" name="first_name"></div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary btn-sm" type="submit" style="background: var(--bs-success);">Save Settings</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!--FOOTER START-->
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © SCHOOLHELP 2022</span></div>
+                <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
             </div>
         </footer>
-        <!--FOOTER END-->
     </div>
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </div>
@@ -194,13 +159,11 @@ if ($_SESSION['loginas'] != 'administrator') {
     </div>
 </div>
 
-
-<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assets/js/chart.min.js"></script>
-<script src="../assets/js/bs-init.js"></script>
-<script src="../assets/js/theme.js"></script>
 <!--MODAL-->
 <script src="../assets/js/modal.js"></script>
+
+<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="../assets/js/theme.js"></script>
 </body>
 
 </html>

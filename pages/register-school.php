@@ -75,11 +75,15 @@ if ($_SESSION['loginas'] != 'administrator') {
                                             class="border rounded-circle img-profile"
                                             src="../assets/img/avatars/avatar1.jpeg"></a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
-                                            class="dropdown-item" href="#"><i
+                                            class="dropdown-item" href="profile.php"><i
                                                 class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="logout.php"><i
-                                                class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    <!--LOG OUT START-->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                    <!--LOG OUT END-->
                                 </div>
                             </div>
                         </li>
@@ -160,17 +164,14 @@ if ($_SESSION['loginas'] != 'administrator') {
                         <?php
                         if (isset($_GET['message'])) {
                             if ($_GET['message'] == "success") {
-                                echo "<div class='alert alert-success' role='alert'>Data has successfully saved!</div>";
+                                echo "<div class='alert alert-success' role='alert'>School has successfully saved!</div>";
                             } else if ($_GET['message'] == "invalidschool") {
                                 echo "<div class='alert alert-danger' role='alert'>School already registered</div>";
                             } else if ($_GET['message'] == "fail") {
-                                echo "<div class='alert alert-danger' role='alert'>Error!!! The data can't be saved</div>";
+                                echo "<div class='alert alert-danger' role='alert'>Error!!! The school can't be saved</div>";
                             }
                         }
                         ?>
-
-
-
 
                         <form method="post" action="action/register-school-action.php">
                             <label class="form-label">School Name</label>
@@ -202,30 +203,62 @@ if ($_SESSION['loginas'] != 'administrator') {
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">School Administrator Form</p>
                     </div>
-                    <div class="card-body"><label class="form-label">Username</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
+                    <div class="card-body">
 
-                        <label class="form-label" style="margin-top: 15px;">Password</label>
-                        <div class="input-group"><input class="form-control" type="password"></div>
 
-                        <label class="form-label" style="margin-top: 15px;">Full Name</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
+                        <?php
+                        if (isset($_GET['message'])) {
+                            if ($_GET['message'] == "success") {
+                                echo "<div class='alert alert-success' role='alert'>User has successfully saved!</div>";
+                            } else if ($_GET['message'] == "invalidschool") {
+                                echo "<div class='alert alert-danger' role='alert'>User already registered</div>";
+                            } else if ($_GET['message'] == "fail") {
+                                echo "<div class='alert alert-danger' role='alert'>Error!!! The user can't be saved</div>";
+                            }
+                        }
+                        ?>
 
-                        <label class="form-label" style="margin-top: 15px;">Email</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
+                        <form method="post" action="action/register-administrator-action.php">
+                            <label class="form-label">Username</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="username">
+                            </div>
 
-                        <label class="form-label" style="margin-top: 15px;">Phone</label>
-                        <div class="input-group"><input class="form-control" type="number"></div>
+                            <label class="form-label" style="margin-top: 15px;">Password</label>
+                            <div class="input-group">
+                                <input class="form-control" type="password" name="password">
+                            </div>
 
-                        <label class="form-label" style="margin-top: 15px;">Staff ID</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
+                            <label class="form-label" style="margin-top: 15px;">Full Name</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="fullname">
+                            </div>
 
-                        <label class="form-label" style="margin-top: 15px;">Position</label>
-                        <div class="input-group"><input class="form-control" type="text"></div>
+                            <label class="form-label" style="margin-top: 15px;">Email</label>
+                            <div class="input-group">
+                                <input class="form-control" type="email" name="email"/>
+                            </div>
 
-                        <button class="btn btn-primary" type="submit"
-                                style="background: var(--bs-green);margin-top: 20px;">Submit
-                        </button>
+                            <label class="form-label" style="margin-top: 15px;">Phone</label>
+                            <div class="input-group">
+                                <input class="form-control" type="number" name="phone">
+                            </div>
+
+                            <label class="form-label" style="margin-top: 15px;">Staff ID</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="staffid">
+                            </div>
+
+                            <label class="form-label" style="margin-top: 15px;">Position</label>
+                            <div class="input-group">
+                                <input class="form-control" type="text" name="position">
+                            </div>
+
+                            <button class="btn btn-primary" type="submit"
+                                    style="background: var(--bs-green);margin-top: 20px;">Submit
+                            </button>
+                        </form>
+
                     </div>
                 </div>
                 <!--SCHOOL ADMINISTRATOR FORM INPUT END-->
@@ -245,6 +278,27 @@ if ($_SESSION['loginas'] != 'administrator') {
     <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="logoutmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure want to log out?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Select "Logout" below if you are ready to.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="logout.php">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--MODAL-->
+<script src="../assets/js/modal.js"></script>
 
 <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="../assets/js/bs-init.js"></script>
