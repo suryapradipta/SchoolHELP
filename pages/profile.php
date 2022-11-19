@@ -57,31 +57,54 @@ if ($_SESSION['loginas'] != 'administrator') {
 
 
                         <!--PROFILE START-->
-                        <li class="nav-item dropdown no-arrow">
-                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small"> <?php echo $_SESSION ['fullname'] ?></span><img
-                                            class="border rounded-circle img-profile"
-                                            src="../assets/img/avatars/avatar1.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
-                                        Profile
+                        <?php
+                        include 'action/connection.php';
+
+                        $userid = $_SESSION['userid'];
+                        $staffid = $_SESSION['staffid'];
+
+
+                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
+                        while ($datauser = mysqli_fetch_array($sql)) {
+                            ?>
+
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link"
+                                       aria-expanded="false"
+                                       data-bs-toggle="dropdown"
+                                       href="#">
+                                    <span class="d-none d-lg-inline me-2 text-gray-600 small">
+                                        <?php echo $datauser['fullname']; ?>
+                                    </span>
+                                        <img class="border rounded-circle img-profile"
+                                             src="../assets/img/avatars/avatar1.jpeg">
                                     </a>
 
-                                    <div class="dropdown-divider"></div>
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
 
 
-                                    <!--LOG OUT START-->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
-                                    <!--LOG OUT END-->
+                                        <!--LOG OUT START-->
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                            Logout
+                                        </a>
+                                        <!--LOG OUT END-->
 
 
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                            <?php
+                        }
+
+                        ?>
                         <!--PROFILE END-->
 
 
@@ -92,18 +115,18 @@ if ($_SESSION['loginas'] != 'administrator') {
 
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">Profile</h3>
+                <!--CHANGE USER PROFILE START-->
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">User Settings</p>
                     </div>
                     <div class="card-body">
 
-
                         <?php
                         if (isset($_GET['message'])) {
-                            if ($_GET['message'] == "success") {
+                            if ($_GET['message'] == "update-profile-success") {
                                 echo "<div class='alert alert-success' role='alert'>Profile has successfully updated!</div>";
-                            } else if ($_GET['message'] == "fail") {
+                            } else if ($_GET['message'] == "update-profile-fail") {
                                 echo "<div class='alert alert-danger' role='alert'>Error! The profile can't updated</div>";
                             }
                         }
@@ -136,6 +159,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        type="text" id="fullname"
                                                        placeholder="Full Name"
                                                        name="fullname"
+                                                       required="required"
                                                        value="<?php echo $datauser['fullname']; ?>">
                                             </div>
                                         </div>
@@ -150,6 +174,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        id="email"
                                                        placeholder="user@example.com"
                                                        name="email"
+                                                       required="required"
                                                        value="<?php echo $datauser['email']; ?>">
                                             </div>
                                         </div>
@@ -167,6 +192,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        id="phone"
                                                        placeholder="0000000000"
                                                        name="phone"
+                                                       required="required"
                                                        value="<?php echo $datauser['phone']; ?>">
                                             </div>
                                         </div>
@@ -178,9 +204,9 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                 </label>
                                                 <input class="form-control"
                                                        type="text"
-                                                       id="staffid"
                                                        placeholder="000"
                                                        name="staffid"
+                                                       required="required"
                                                        value="<?php echo $dataadmin['staffid']; ?>">
                                             </div>
                                         </div>
@@ -196,6 +222,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        id="position"
                                                        placeholder="Position"
                                                        name="position"
+                                                       required="required"
                                                        value="<?php echo $dataadmin['position']; ?>">
                                             </div>
                                         </div>
@@ -216,21 +243,81 @@ if ($_SESSION['loginas'] != 'administrator') {
                         ?>
                     </div>
                 </div>
+                <!--CHANGE USER PROFILE END-->
 
+                <!--CHANGE PASSWORD START-->
                 <div class="card shadow" style="margin-top: 30px;">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Change Password</p>
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="row mb-3">
-                                <div class="col-sm-6 mb-3 mb-sm-0"><input id="examplePasswordInput" class="form-control form-control-user" type="password" placeholder="Password" name="password" /></div>
-                                <div class="col-sm-6"><input id="exampleRepeatPasswordInput" class="form-control form-control-user" type="password" placeholder="Repeat Password" name="password_repeat" /></div>
-                            </div>
-                            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit" style="background: var(--bs-green);">Save Settings</button></div>
-                        </form>
+
+                        <?php
+                        if (isset($_GET['message'])) {
+                            if ($_GET['message'] == "update-password-success") {
+                                echo "<div class='alert alert-success' role='alert'>Password has successfully updated!</div>";
+                            } else if ($_GET['message'] == "update-password-fail") {
+                                echo "<div class='alert alert-danger' role='alert'>Error! Password can't updated</div>";
+                            }
+                            else if ($_GET['message'] == "update-password-match") {
+                                echo "<div class='alert alert-danger' role='alert'>Password is not the same</div>";
+                            }
+                        }
+                        ?>
+
+                        <?php
+                        include 'action/connection.php';
+
+                        $userid = $_SESSION['userid'];
+
+                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
+                        while ($datauser = mysqli_fetch_array($sql)) {
+                            ?>
+                            <form method="post" action="action/profile-password-action.php">
+                                <div class="row mb-3">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+
+                                        <input type="hidden"
+                                               name="userid"
+                                               value="<?php echo $datauser['userid']; ?>">
+
+                                        <input type="hidden"
+                                               name="password"
+                                               value="<?php echo $datauser['password']; ?>">
+
+                                        <input id="examplePasswordInput"
+                                               class="form-control form-control-user"
+                                               type="password"
+                                               placeholder="Password"
+                                               name="password"
+                                               required="required"/>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input id="exampleRepeatPasswordInput"
+                                               class="form-control form-control-user"
+                                               type="password"
+                                               placeholder="Repeat Password"
+                                               name="password_repeat"
+                                               required="required"/>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <button class="btn btn-primary btn-sm"
+                                            type="submit"
+                                            style="background: var(--bs-green);">
+                                        Save Settings
+                                    </button>
+                                </div>
+                            </form>
+
+                            <?php
+                        }
+                        ?>
                     </div>
                 </div>
+                <!--CHANGE PASSWORD END-->
+
+
             </div>
         </div>
         <!--FOOTER START-->

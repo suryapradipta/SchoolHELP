@@ -69,24 +69,54 @@ if ($_SESSION['loginas'] != 'administrator') {
                         <div class="d-none d-sm-block topbar-divider"></div>
 
                         <!--PROFILE START-->
-                        <li class="nav-item dropdown no-arrow">
-                            <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span
-                                            class="d-none d-lg-inline me-2 text-gray-600 small"> <?php echo $_SESSION ['fullname'] ?></span><img
-                                            class="border rounded-circle img-profile"
-                                            src="../assets/img/avatars/avatar1.jpeg"></a>
-                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a
-                                            class="dropdown-item" href="profile.php"><i
-                                                class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a>
-                                    <div class="dropdown-divider"></div>
-                                    <!--LOG OUT START-->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
-                                        Logout
+                        <?php
+                        include 'action/connection.php';
+
+                        $userid = $_SESSION['userid'];
+                        $staffid = $_SESSION['staffid'];
+
+
+                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
+                        while ($datauser = mysqli_fetch_array($sql)) {
+                            ?>
+
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link"
+                                       aria-expanded="false"
+                                       data-bs-toggle="dropdown"
+                                       href="#">
+                                    <span class="d-none d-lg-inline me-2 text-gray-600 small">
+                                        <?php echo $datauser['fullname']; ?>
+                                    </span>
+                                        <img class="border rounded-circle img-profile"
+                                             src="../assets/img/avatars/avatar1.jpeg">
                                     </a>
-                                    <!--LOG OUT END-->
+
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <a class="dropdown-item" href="profile.php">
+                                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+
+                                        <div class="dropdown-divider"></div>
+
+
+                                        <!--LOG OUT START-->
+                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
+                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                            Logout
+                                        </a>
+                                        <!--LOG OUT END-->
+
+
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
+                            </li>
+                            <?php
+                        }
+
+                        ?>
                         <!--PROFILE END-->
 
                     </ul>
