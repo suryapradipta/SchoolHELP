@@ -29,15 +29,25 @@ $sql1 = mysqli_query($connect, "update user set fullname='$fullname',
                 phone='$phone'
             where userid='$userid'");
 
-$sql2 = mysqli_query($connect, "update schooladmin set 
+$updatestaffid = mysqli_query($connect, "update schooladmin set 
                        staffid = '$staffid'
             where position='$position'");
 
 
-if ($sql1 and $sql2) {
+$updateposition = mysqli_query($connect, "update schooladmin set 
+                       position = '$position'
+            where staffid='$staffid'");
+
+
+
+
+if ($updatestaffid or $sql1) {
 //    echo "SUCCESS!!!!";
     $_SESSION['staffid'] = $staffid;
     header("location:../profile.php?message=update-profile-success");
+    if ($updateposition) {
+        header("location:../profile.php?message=update-profile-success");
+    }
 } else {
 //    echo 'FAILED!!!!!';
     header("location:../profile.php?message=update-profile-fail");
