@@ -61,8 +61,6 @@ if ($_SESSION['loginas'] != 'administrator') {
                         include 'action/connection.php';
 
                         $userid = $_SESSION['userid'];
-                        $staffid = $_SESSION['staffid'];
-
 
                         $sql = mysqli_query($connect, "select * from user where userid='$userid'");
                         while ($datauser = mysqli_fetch_array($sql)) {
@@ -126,10 +124,16 @@ if ($_SESSION['loginas'] != 'administrator') {
                             <div class="card-body">
                                 <div class="row align-items-center no-gutters">
                                     <div class="col me-2">
-                                        <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Earnings (monthly)</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>$40,000</span></div>
+                                        <div class="text-uppercase text-primary fw-bold text-xs mb-1">
+                                            <span>Earnings (monthly)</span>
+                                        </div>
+                                        <div class="text-dark fw-bold h5 mb-0">
+                                            <span>$40,000</span>
+                                        </div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -187,6 +191,7 @@ if ($_SESSION['loginas'] != 'administrator') {
             </div>
         </div>
 
+        
         <!--FOOTER START-->
         <footer class="bg-white sticky-footer">
             <div class="container my-auto">
