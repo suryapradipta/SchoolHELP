@@ -179,271 +179,269 @@ if ($_SESSION['loginas'] != 'administrator') {
                 </div>
                 <!--DROP DOWN MENU END-->
 
-
-                <!--SCHOOL FORM START-->
-                <div class="card shadow" id="school-form">
-                    <!--HEADER START-->
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">School Form</p>
-                    </div>
-                    <!--HEADER END-->
-
-                    <!--FORM START-->
-                    <div class="card-body">
-
+                <?php
+                if (isset($_GET['message'])) {
+                if ($_GET['message'] == "register-administrator-success" or
+                $_GET['message'] == "register-administrator-fail" or
+                $_GET['message'] == "invaliduser") {
+                ?>
+                <div class="card shadow" id="school-form" style="display: none">
+                    <?php
+                    }
+                    }
+                    else {
+                    ?>
+                    <div class="card shadow" id="school-form">
                         <?php
-                        if (isset($_GET['message'])) {
-                            if ($_GET['message'] == "success") {
-                                echo "<div class='alert alert-success' role='alert'>School has successfully saved!</div>";
-                            } else if ($_GET['message'] == "invalidschool") {
-                                echo "<div class='alert alert-danger' role='alert'>School already registered, try continue to create school administrator?</div>";
-
-                            } else if ($_GET['message'] == "fail") {
-                                echo "<div class='alert alert-danger' role='alert'>Error!!! The school can't be saved</div>";
-                            }
                         }
                         ?>
+                        <!--HEADER START-->
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">School Form</p>
+                        </div>
+                        <!--HEADER END-->
 
-                        <form method="post" action="action/register-school-action.php">
-                            <label class="form-label">School Name</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="text"
-                                       name="schoolname"
-                                       required="required">
-                            </div>
+                        <!--FORM START-->
+                        <div class="card-body">
 
-                            <label class="form-label" style="margin-top: 15px;">Address</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="text"
-                                       name="address"
-                                       required="required">
-                            </div>
+                            <?php
+                            if (isset($_GET['school-message'])) {
+                                if ($_GET['school-message'] == "school-success") {
+                                    echo "<div class='alert alert-success' role='alert'>School has successfully saved!</div>";
+                                } else if ($_GET['school-message'] == "invalidschool") {
+                                    echo "<div class='alert alert-danger' role='alert'>School already registered, try continue to create school administrator?</div>";
 
-                            <label class="form-label" style="margin-top: 15px;">City</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="text"
-                                       name="city"
-                                       required="required">
-                            </div>
-
-                            <button class="btn btn-primary" type="submit" style="background: var(--bs-green);margin-top: 20px;">Submit</button>
-                        </form>
-                    </div>
-                    <!--FORM END-->
-                </div>
-                <!--SCHOOL FORM END-->
-
-
-
-                <!--SCHOOL ADMINISTRATOR FORM INPUT START-->
-                <div class="card shadow" style="display: none" id="administrator-form">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">School Administrator Form</p>
-                    </div>
-                    <div class="card-body">
-
-
-                        <?php
-                        if (isset($_GET['message'])) {
-                            if ($_GET['message'] == "register-administrator-success") {
-                                echo "<div class='alert alert-success' role='alert'>User has successfully saved!</div>";
-                            } else if ($_GET['message'] == "invaliduser") {
-                                echo "<div class='alert alert-danger' role='alert'>User already registered</div>";
-                            } else if ($_GET['message'] == "register-administrator-fail") {
-                                echo "<div class='alert alert-danger' role='alert'>Error! User can't be saved</div>";
+                                } else if ($_GET['school-message'] == "school-fail") {
+                                    echo "<div class='alert alert-danger' role='alert'>Error!!! The school can't be saved</div>";
+                                }
                             }
+                            ?>
+
+                            <form method="post" action="action/register-school-action.php">
+                                <label class="form-label">School Name</label>
+                                <div class="input-group">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="schoolname"
+                                           required="required">
+                                </div>
+
+                                <label class="form-label" style="margin-top: 15px;">Address</label>
+                                <div class="input-group">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="address"
+                                           required="required">
+                                </div>
+
+                                <label class="form-label" style="margin-top: 15px;">City</label>
+                                <div class="input-group">
+                                    <input class="form-control"
+                                           type="text"
+                                           name="city"
+                                           required="required">
+                                </div>
+
+                                <button class="btn btn-primary" type="submit" style="background: var(--bs-green);margin-top: 20px;">Submit</button>
+                            </form>
+                        </div>
+                        <!--FORM END-->
+                    </div>
+
+
+
+
+
+
+
+                    <?php
+                    if (isset($_GET['message'])) {
+                    if ($_GET['message'] == "register-administrator-success") {
+                    ?>
+                    <div class="card shadow" id="administrator-form">
+                        <?php
                         }
+                        else {
                         ?>
+                        <div class="card shadow" id="administrator-form">
+                            <?php
+                            }
+                            } else { ?>
+                            <div class="card shadow" style="display: none" id="administrator-form">
+                                <?php } ?>
+                                <div class="card-header py-3">
+                                    <p class="text-primary m-0 fw-bold">School Administrator Form</p>
+                                </div>
+                                <div class="card-body">
+                                    <?php
+                                    if (isset($_GET['message'])) {
+                                        if ($_GET['message'] == "register-administrator-success") {
+                                            echo "<div class='alert alert-success' role='alert'>User has successfully saved!</div>";
+                                        } else if ($_GET['message'] == "invaliduser") {
+                                            echo "<div class='alert alert-danger' role='alert'>User already registered</div>";
+                                        } else if ($_GET['message'] == "register-administrator-fail") {
+                                            echo "<div class='alert alert-danger' role='alert'>Error! User can't be saved</div>";
+                                        }
+                                    }
+                                    ?>
 
-                        <form method="post" action="action/register-administrator-action.php">
+                                    <form method="post" action="action/register-administrator-action.php">
 
-                            <label class="form-label">School ID</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="number"
-                                       name="schoolid"
-                                       required="required">
+                                        <label class="form-label">School ID</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="number"
+                                                   name="schoolid"
+                                                   required="required">
+                                        </div>
+
+                                        <label class="form-label" style="margin-top: 15px;">Username</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="text"
+                                                   name="username"
+                                                   required="required">
+                                        </div>
+
+                                        <label class="form-label" style="margin-top: 15px;">Password</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="password"
+                                                   name="password"
+                                                   required="required">
+                                        </div>
+
+                                        <label class="form-label" style="margin-top: 15px;">Full Name</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="text"
+                                                   name="fullname"
+                                                   required="required">
+                                        </div>
+
+                                        <label class="form-label" style="margin-top: 15px;">Email</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="email"
+                                                   name="email"
+                                                   required="required"/>
+                                        </div>
+
+                                        <label class="form-label" style="margin-top: 15px;">Phone</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="number"
+                                                   name="phone"
+                                                   required="required">
+                                        </div>
+
+                                        <label class="form-label" style="margin-top: 15px;">Staff ID</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="number"
+                                                   name="staffid"
+                                                   required="required">
+                                        </div>
+
+                                        <label class="form-label" style="margin-top: 15px;">Position</label>
+                                        <div class="input-group">
+                                            <input class="form-control"
+                                                   type="text"
+                                                   name="position"
+                                                   required="required">
+                                        </div>
+
+                                        <button class="btn btn-primary" type="submit"
+                                                style="background: var(--bs-green);margin-top: 20px;">Submit
+                                        </button>
+                                    </form>
+
+                                </div>
                             </div>
 
-                            <label class="form-label" style="margin-top: 15px;">Username</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="text"
-                                       name="username"
-                                       required="required">
-                            </div>
 
-                            <label class="form-label" style="margin-top: 15px;">Password</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="password"
-                                       name="password"
-                                       required="required">
-                            </div>
 
-                            <label class="form-label" style="margin-top: 15px;">Full Name</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="text"
-                                       name="fullname"
-                                       required="required">
-                            </div>
 
-                            <label class="form-label" style="margin-top: 15px;">Email</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="email"
-                                       name="email"
-                                       required="required"/>
-                            </div>
 
-                            <label class="form-label" style="margin-top: 15px;">Phone</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="number"
-                                       name="phone"
-                                       required="required">
-                            </div>
 
-                            <label class="form-label" style="margin-top: 15px;">Staff ID</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="number"
-                                       name="staffid"
-                                       required="required">
-                            </div>
 
-                            <label class="form-label" style="margin-top: 15px;">Position</label>
-                            <div class="input-group">
-                                <input class="form-control"
-                                       type="text"
-                                       name="position"
-                                       required="required">
-                            </div>
+                        </div>
+                        <!--CONTENT END-->
+                    </div>
 
-                            <button class="btn btn-primary" type="submit"
-                                    style="background: var(--bs-green);margin-top: 20px;">Submit
-                            </button>
-                        </form>
+                    <!--FOOTER START-->
+                    <footer class="bg-white sticky-footer">
+                        <div class="container my-auto">
+                            <div class="text-center my-auto copyright"><span>Copyright © SCHOOLHELP 2022</span></div>
+                        </div>
+                    </footer>
+                    <!--FOOTER END-->
 
+                </div>
+                <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="logoutmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure want to log out?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Select "Logout" below if you are ready to.
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="logout.php">Logout</a>
+                        </div>
                     </div>
                 </div>
-                <!--SCHOOL ADMINISTRATOR FORM INPUT END-->
             </div>
-            <!--CONTENT END-->
-        </div>
 
-        <!--FOOTER START-->
-        <footer class="bg-white sticky-footer">
-            <div class="container my-auto">
-                <div class="text-center my-auto copyright"><span>Copyright © SCHOOLHELP 2022</span></div>
-            </div>
-        </footer>
-        <!--FOOTER END-->
+            <!--MODAL-->
+            <script src="../assets/js/modal.js"></script>
 
-    </div>
-    <a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
-</div>
+            <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+            <script src="../assets/js/bs-init.js"></script>
+            <script src="../assets/js/theme.js"></script>
 
-<!-- Modal -->
-<div class="modal fade" id="logoutmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure want to log out?</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                Select "Logout" below if you are ready to.
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="logout.php">Logout</a>
-            </div>
-        </div>
-    </div>
-</div>
+            <!--DATA TABLES START-->
+            <script src="../assets/js/jquery-3.6.1.js" type="text/javascript"></script>
+            <script src="../assets/js/datatables.min.js"></script>
+            <script src="../assets/js/datatables.js"></script>
+            <!--DATA TABLES END-->
 
-<!-- Modal -->
-<?php if(isset($_GET['invalidschool']) != NULL) { ?>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-<?php
-}
-?>
+            <script>
+                $('#schoolinfotable').dataTable({
+                    scrollY: 270,
+                    scrollX: true,
+                });
 
 
+            </script>
+
+            <!--HIDE AND SHOW FORM START-->
+            <script>
+                $('#form-administrator-display').click(function () {
+                    if ($('#administrator-form').css('display') === 'none') {
+                        $('#administrator-form').show();
+                        $('#school-form').hide();
+                    }
+
+                })
+
+                $('#form-school-display').click(function () {
+                    if ($('#school-form').css('display') === 'none') {
+                        $('#administrator-form').hide();
+                        $('#school-form').show();
+                    }
+                })
 
 
-<!--MODAL-->
-<script src="../assets/js/modal.js"></script>
-
-<script src="../assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="../assets/js/bs-init.js"></script>
-<script src="../assets/js/theme.js"></script>
-
-<!--DATA TABLES START-->
-<script src="../assets/js/jquery-3.6.1.js" type="text/javascript"></script>
-<script src="../assets/js/datatables.min.js"></script>
-<script src="../assets/js/datatables.js"></script>
-<!--DATA TABLES END-->
-
-<script>
-    $('#schoolinfotable').dataTable({
-        scrollY: 270,
-        scrollX: true,
-    });
-
-
-</script>
-
-<!--HIDE AND SHOW FORM START-->
-<script>
-    $('#form-administrator-display').click(function () {
-        if ($('#administrator-form').css('display') === 'none') {
-            $('#administrator-form').show();
-            $('#school-form').hide();
-        }
-
-    })
-
-    $('#form-school-display').click(function () {
-        if ($('#school-form').css('display') === 'none') {
-            $('#administrator-form').hide();
-            $('#school-form').show();
-        }
-    })
-
-
-</script>
-<!--HIDE AND SHOW FORM END-->
-
-<!--SHOW MODAL WHILE INVALID-->
-<!--NOT YET WORKED-->
-<script>
-    if(document.getElementById("exampleModal")){
-        var exmodal = new bootstrap.Modal(document.getElementById("exampleModal"));
-        exmodal.show();
-    }
-</script>
+            </script>
+            <!--HIDE AND SHOW FORM END-->
 
 
 </body>

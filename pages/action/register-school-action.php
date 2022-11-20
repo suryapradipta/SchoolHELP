@@ -17,12 +17,12 @@ if($validschool === 0) {
     $sql = mysqli_query($connect, "INSERT INTO school(`schoolname`, `address`, `city`)
         VALUES('$schoolname','$address','$city')");
     if ($sql) {
-        header("location:../register-school.php?message=success");
+        header("location:../register-school.php?school-message=school-success");
     } else {
-        header("location:../register-school.php?message=fail");
+        header("location:../register-school.php?school-message=school-fail");
     }
 } else {
-    header("location:../register-school.php?message=invalidschool");
+    header("location:../register-school.php?school-message=invalidschool");
 }
 
 ?>
