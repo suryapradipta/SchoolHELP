@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 17, 2022 at 11:48 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Nov 21, 2022 at 03:51 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -79,7 +79,12 @@ CREATE TABLE `school` (
 --
 
 INSERT INTO `school` (`schoolid`, `schoolname`, `address`, `city`) VALUES
-(2, 'HELP University', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur, Malaysia', 'Kuala Lumpur');
+(1, 'HELP University', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur, Malaysia', 'Kuala Lumpur'),
+(2, 'ITB Stikom Bali', 'Jl. Raya Puputan No.86, Dangin Puri Klod, Kec. Denpasar Tim., Kota Denpasar, Bali 80234\r\n', 'Denpasar'),
+(21, 'a', 'a', 'a'),
+(22, 'b', 'b', 'b'),
+(23, 'c', 'c', 'c'),
+(24, 'd', 'd', 'd');
 
 -- --------------------------------------------------------
 
@@ -99,7 +104,9 @@ CREATE TABLE `schooladmin` (
 --
 
 INSERT INTO `schooladmin` (`userid`, `schoolid`, `staffid`, `position`) VALUES
-(1, 2, 3, 'school help administrator');
+(2, 2, 1, 'school administrator'),
+(1, 1, 66, 'schoolhe666'),
+(41, 24, 2424, '2424');
 
 -- --------------------------------------------------------
 
@@ -125,8 +132,8 @@ CREATE TABLE `user` (
   `userid` int(11) NOT NULL,
   `username` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
-  `fullname` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `fullname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -135,9 +142,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `fullname`, `email`, `phone`) VALUES
-(1, 'a', 'a', 'school help administrator', 'schoolhelpadmin@help.com', '081246038181'),
-(2, 'b', 'b', 'school administrator', 'schooladministrator', '1238123124'),
-(3, 'c', 'c', 'volunteer', 'volunteer@gmail.com', '123124');
+(1, 'a', 'a', 'school help administrato udpdate', 'updated666@help.com', '55556666'),
+(2, 'b', 'b', 'schooladministrator2', 'schooladministrator2@help.com', '222'),
+(3, 'c', 'c', 'volunteer', 'volunteer@gmail.com', '123124'),
+(41, 'kk', 'kk', 'kk', 'kk@m.com', '242424');
 
 -- --------------------------------------------------------
 
@@ -229,19 +237,19 @@ ALTER TABLE `request`
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `schoolid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `schoolid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `schooladmin`
 --
 ALTER TABLE `schooladmin`
-  MODIFY `staffid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `staffid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17172;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
