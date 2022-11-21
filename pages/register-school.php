@@ -170,7 +170,8 @@ if ($_SESSION['loginas'] != 'administrator') {
                 if (isset($_GET['message'])) {
                 if ($_GET['message'] == "register-administrator-success" or
                 $_GET['message'] == "register-administrator-fail" or
-                $_GET['message'] == "invaliduser") {
+                $_GET['message'] == "invaliduser" or
+                $_GET['message'] == "username-fail"){
                 ?>
                 <div class="card shadow" id="school-form" style="display: none">
                     <?php
@@ -263,6 +264,9 @@ if ($_SESSION['loginas'] != 'administrator') {
                                             echo "<div class='alert alert-danger' role='alert'>User already registered</div>";
                                         } else if ($_GET['message'] == "register-administrator-fail") {
                                             echo "<div class='alert alert-danger' role='alert'>Error! User can't be saved</div>";
+                                        }
+                                        else if ($_GET['message'] == "username-fail") {
+                                            echo "<div class='alert alert-danger' role='alert'>Username already taken</div>";
                                         }
                                     }
                                     ?>
