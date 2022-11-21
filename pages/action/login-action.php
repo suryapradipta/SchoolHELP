@@ -34,6 +34,7 @@ if (isset($_POST['username']) != NULL) {
                 $_SESSION['staffid'] = $row["staffid"];
                 $_SESSION['position'] = $row["position"];
                 $_SESSION['userid'] = $row["userid"];
+                $_SESSION['schoolid'] = $row["schoolid"];
 
                 $_SESSION['loginas'] = 'administrator';
             }

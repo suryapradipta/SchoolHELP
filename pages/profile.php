@@ -57,16 +57,6 @@ if ($_SESSION['loginas'] != 'administrator') {
 
 
                         <!--PROFILE START-->
-                        <?php
-                        include 'action/connection.php';
-
-                        $userid = $_SESSION['userid'];
-                        $staffid = $_SESSION['staffid'];
-
-
-                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
-                        while ($datauser = mysqli_fetch_array($sql)) {
-                            ?>
 
                             <li class="nav-item dropdown no-arrow">
                                 <div class="nav-item dropdown no-arrow">
@@ -75,7 +65,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                        data-bs-toggle="dropdown"
                                        href="#">
                                     <span class="d-none d-lg-inline me-2 text-gray-600 small">
-                                        <?php echo $datauser['fullname']; ?>
+                                        <?php echo $_SESSION['fullname']; ?>
                                     </span>
                                         <img class="border rounded-circle img-profile"
                                              src="../assets/img/avatars/avatar1.jpeg">
@@ -101,10 +91,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                     </div>
                                 </div>
                             </li>
-                            <?php
-                        }
 
-                        ?>
                         <!--PROFILE END-->
 
 
@@ -132,18 +119,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                         }
                         ?>
 
-                        <?php
-                        include 'action/connection.php';
 
-                        $userid = $_SESSION['userid'];
-                        $staffid = $_SESSION['staffid'];
-
-
-                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
-                        $sql2 = mysqli_query($connect, "select * from schooladmin where staffid='$staffid'");
-                        while ($datauser = mysqli_fetch_array($sql)) {
-                            while ($dataadmin = mysqli_fetch_array($sql2)) {
-                                ?>
                                 <form method="post" action="action/profile-action.php">
                                     <div class="row">
                                         <div class="col">
@@ -153,14 +129,17 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                 </label>
                                                 <input type="hidden"
                                                        name="userid"
-                                                       value="<?php echo $datauser['userid']; ?>">
+                                                       value="<?php echo $_SESSION['userid']; ?>">
+                                                <input type="hidden"
+                                                       name="schoolid"
+                                                       value="<?php echo $_SESSION['schoolid']; ?>">
 
                                                 <input class="form-control"
                                                        type="text" id="fullname"
                                                        placeholder="Full Name"
                                                        name="fullname"
                                                        required="required"
-                                                       value="<?php echo $datauser['fullname']; ?>">
+                                                       value="<?php echo $_SESSION['fullname'] ?>">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -175,7 +154,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        placeholder="user@example.com"
                                                        name="email"
                                                        required="required"
-                                                       value="<?php echo $datauser['email']; ?>">
+                                                       value="<?php echo $_SESSION['email'] ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +172,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        placeholder="0000000000"
                                                        name="phone"
                                                        required="required"
-                                                       value="<?php echo $datauser['phone']; ?>">
+                                                       value="<?php echo $_SESSION['phone']; ?>">
                                             </div>
                                         </div>
                                         <div class="col">
@@ -207,7 +186,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        placeholder="000"
                                                        name="staffid"
                                                        required="required"
-                                                       value="<?php echo $dataadmin['staffid']; ?>">
+                                                       value="<?php echo $_SESSION['staffid']; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -223,7 +202,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                        placeholder="Position"
                                                        name="position"
                                                        required="required"
-                                                       value="<?php echo $dataadmin['position']; ?>">
+                                                       value="<?php echo $_SESSION['position']; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -237,10 +216,6 @@ if ($_SESSION['loginas'] != 'administrator') {
                                     </div>
                                 </form>
 
-                                <?php
-                            }
-                        }
-                        ?>
                     </div>
                 </div>
                 <!--CHANGE USER PROFILE END-->
