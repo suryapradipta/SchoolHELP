@@ -28,9 +28,9 @@
 
                                 <!--LOGIN VALIDATION-->
                                 <?php
-                                if (isset($_GET['message'])) {
-                                    if ($_GET['message'] == "fail") {
-                                        echo "<center><div class='alert alert-danger' role='alert'>Username or Password is Wrong!</div><center>";
+                                if (isset($_GET['login-message'])) {
+                                    if ($_GET['login-message'] == "login-failed") {
+                                        echo "<center><div class='alert alert-danger' role='alert'>Wrong password or username. Try again. </div><center>";
                                     }
                                 }
                                 ?>
