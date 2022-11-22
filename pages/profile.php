@@ -115,6 +115,8 @@ if ($_SESSION['loginas'] != 'administrator') {
                                 echo "<div class='alert alert-success' role='alert'>Profile successfully updated.</div>";
                             } else if ($_GET['profile-message'] == "update-profile-fail") {
                                 echo "<div class='alert alert-danger' role='alert'>Update profile failed. Try again.</div>";
+                            } else if ($_GET['profile-message'] == "update-profile-invalid") {
+                                echo "<div class='alert alert-danger' role='alert'>Update profile failed. Try another details.</div>";
                             } else if ($_GET['profile-message'] == "staff-id-failed") {
                                 echo "<div class='alert alert-danger' role='alert'>Staff ID already taken. Try another.</div>";
                             }
@@ -235,7 +237,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                             } else if ($_GET['password-message'] == "update-password-fail") {
                                 echo "<div class='alert alert-danger' role='alert'>Update password failed. Try again.</div>";
                             } else if ($_GET['password-message'] == "update-password-match") {
-                                echo "<div class='alert alert-danger' role='alert'>Password is not the same</div>";
+                                echo "<div class='alert alert-danger' role='alert'>Password is not the same.</div>";
                             }
                         }
                         ?>

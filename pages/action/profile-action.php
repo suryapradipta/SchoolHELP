@@ -11,27 +11,27 @@ $schoolid = $_POST['schoolid'];
 $staffid = $_POST['staffid'];
 $position = $_POST['position'];
 
-
 $validuser = mysqli_num_rows(mysqli_query($connect, "SELECT userid FROM user WHERE userid='$userid'"));
-
 if ($validuser > 0) {
+
     $updateuser = mysqli_query($connect, "update user set fullname='$fullname',
                 email='$email',
                 phone='$phone'
             where userid='$userid'");
+
     if ($updateuser) {
         $_SESSION['fullname'] = $fullname;
         $_SESSION['email'] = $email;
         $_SESSION['phone'] = $phone;
         header("location:../profile.php?profile-message=update-profile-success");
     } else {
-        header("location:../profile.php?profile-message=update-profile-fail");
+        header("location:../profile.php?profile-message=update-profile-invalid");
     }
 } else {
     header("location:../profile.php?profile-message=update-profile-fail");
 }
-$validstaffid = mysqli_num_rows(mysqli_query($connect, "SELECT staffid FROM schooladmin WHERE staffid='$staffid'"));
 
+$validstaffid = mysqli_num_rows(mysqli_query($connect, "SELECT staffid FROM schooladmin WHERE staffid='$staffid'"));
 if ($validstaffid == 0) {
     $updatestaffid = mysqli_query($connect, "update schooladmin set
                            staffid = '$staffid'
@@ -48,7 +48,6 @@ if ($validstaffid == 0) {
 
 $validschool = mysqli_num_rows(mysqli_query($connect, "SELECT schoolid FROM schooladmin WHERE schoolid='$schoolid'"));
 
-
 if ($validschool > 0) {
     $updateposition = mysqli_query($connect, "update schooladmin set
                            position = '$position'
@@ -57,7 +56,7 @@ if ($validschool > 0) {
         $_SESSION['position'] = $position;
         header("location:../profile.php?profile-message=update-profile-success");
     } else {
-        header("location:../profile.php?profile-message=update-profile-fail");
+        header("location:../profile.php?profile-message=update-profile-invalid");
     }
 } else {
     header("location:../profile.php?profile-message=update-profile-fail");
