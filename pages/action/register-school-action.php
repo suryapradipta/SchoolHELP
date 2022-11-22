@@ -1,9 +1,7 @@
 <?php
 
-// DATABASE CONNECTION
 include 'connection.php';
 
-// capture data submitted from forms
 $schoolname = $_POST['schoolname'];
 $address = $_POST['address'];
 $city = $_POST['city'];
@@ -13,7 +11,7 @@ $validschool = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM school WHER
                          address='$address' and 
                          city='$city' "));
 
-if($validschool === 0) {
+if ($validschool === 0) {
     $sql = mysqli_query($connect, "INSERT INTO school(`schoolname`, `address`, `city`)
         VALUES('$schoolname','$address','$city')");
     if ($sql) {
@@ -22,7 +20,7 @@ if($validschool === 0) {
         header("location:../register-school.php?school-message=school-fail");
     }
 } else {
-    header("location:../register-school.php?school-message=invalidschool");
+    header("location:../register-school.php?school-message=invalid-school");
 }
 
 ?>

@@ -15,7 +15,10 @@ if (isset($_POST['username']) != NULL) {
             $_SESSION['fullname'] = $row["fullname"];
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
+            $_SESSION['username'] = $row["username"];
+            $_SESSION['password'] = $row["password"];
         }
+
 
         $adminLogin = ("SELECT * FROM schooladmin WHERE userid='" . $_SESSION['userid'] . "'");
         $dataAdmin = $connect->query($adminLogin);
