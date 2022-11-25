@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if ($_SESSION['loginas'] != 'administrator') {
+if ($_SESSION['loginas'] != 'volunteer') {
     header("location:../pages/login.php?message=fail");
 }
 ?>
