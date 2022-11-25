@@ -23,7 +23,7 @@
                         <div class="col-lg-6">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h4 class="text-dark mb-4">Welcome to SchoolHELP!</h4>
+                                    <h4 class="text-dark mb-4">Welcome to Test!</h4>
                                 </div>
 
                                 <!--LOGIN VALIDATION-->
