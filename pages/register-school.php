@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['loginas'] != 'administrator') {
-    header("location:../login.php?message=fail");
+    header("location:login.php?message=fail");
 }
 ?>
 
