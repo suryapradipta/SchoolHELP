@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['loginas'] != 'administrator') {
-    header("location:../pages/login.php?message=fail");
+    header("location:login.php?message=fail");
 }
 ?>
 
@@ -203,11 +203,11 @@ if ($_SESSION['loginas'] != 'administrator') {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Select "Logout" below if you are ready to.
+                Select "Confirm" to log out.
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="logout.php">Logout</a>
+                <a class="btn btn-primary" href="logout.php">Confirm</a>
             </div>
         </div>
     </div>

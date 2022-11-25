@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['loginas'] != 'administrator') {
-    header("location:../pages/login.php?message=fail");
+    header("location:login.php?message=fail");
 }
 ?>
 
@@ -163,8 +163,10 @@ if ($_SESSION['loginas'] != 'administrator') {
                 if (isset($_GET['message'])) {
                 if ($_GET['message'] == "register-administrator-success" or
                 $_GET['message'] == "register-administrator-fail" or
-                $_GET['message'] == "invaliduser" or
-                $_GET['message'] == "username-fail"){
+                $_GET['message'] == "invalid-school" or
+                $_GET['message'] == "username-fail" or
+                $_GET['message'] == "staffid-fail"
+                ){
                 ?>
                 <div class="card shadow" id="school-form" style="display: none">
                     <?php
@@ -188,12 +190,11 @@ if ($_SESSION['loginas'] != 'administrator') {
                             <?php
                             if (isset($_GET['school-message'])) {
                                 if ($_GET['school-message'] == "school-success") {
-                                    echo "<div class='alert alert-success' role='alert'>School has successfully saved!</div>";
-                                } else if ($_GET['school-message'] == "invalidschool") {
-                                    echo "<div class='alert alert-danger' role='alert'>School already registered, try continue to create school administrator?</div>";
-
+                                    echo "<div class='alert alert-success' role='alert'>School registration form successfully submitted.</div>";
+                                } else if ($_GET['school-message'] == "invalid-school") {
+                                    echo "<div class='alert alert-danger' role='alert'>School already registered. Try again or select register as School Administrator to continue.</div>";
                                 } else if ($_GET['school-message'] == "school-fail") {
-                                    echo "<div class='alert alert-danger' role='alert'>Error!!! The school can't be saved</div>";
+                                    echo "<div class='alert alert-danger' role='alert'>School registration form failed. Try another school details.</div>";
                                 }
                             }
                             ?>
@@ -252,15 +253,18 @@ if ($_SESSION['loginas'] != 'administrator') {
                                     <?php
                                     if (isset($_GET['message'])) {
                                         if ($_GET['message'] == "register-administrator-success") {
-                                            echo "<div class='alert alert-success' role='alert'>User has successfully saved!</div>";
-                                        } else if ($_GET['message'] == "invaliduser") {
-                                            echo "<div class='alert alert-danger' role='alert'>User already registered</div>";
+                                            echo "<div class='alert alert-success' role='alert'>School Administrator registration form successfully submitted.</div>";
+                                        } else if ($_GET['message'] == "invalid-school") {
+                                            echo "<div class='alert alert-danger' role='alert'>Wrong school ID. Try again.</div>";
                                         } else if ($_GET['message'] == "register-administrator-fail") {
-                                            echo "<div class='alert alert-danger' role='alert'>Error! User can't be saved</div>";
+                                            echo "<div class='alert alert-danger' role='alert'>School Administrator registration form failed. Try another school administrator details.</div>";
+                                        } else if ($_GET['message'] == "username-fail") {
+                                            echo "<div class='alert alert-danger' role='alert'>Username already taken. Try another username.</div>";
+                                        }else if ($_GET['message'] == "staffid-fail") {
+                                            echo "<div class='alert alert-danger' role='alert'>Staff ID already taken. Try another staff ID.</div>";
                                         }
-                                        else if ($_GET['message'] == "username-fail") {
-                                            echo "<div class='alert alert-danger' role='alert'>Username already taken</div>";
-                                        }
+
+
                                     }
                                     ?>
 

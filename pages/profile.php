@@ -2,7 +2,7 @@
 session_start();
 
 if ($_SESSION['loginas'] != 'administrator') {
-    header("location:../pages/login.php?message=fail");
+    header("location:login.php?message=fail");
 }
 ?>
 
@@ -59,39 +59,39 @@ if ($_SESSION['loginas'] != 'administrator') {
 
                         <!--PROFILE START-->
 
-                            <li class="nav-item dropdown no-arrow">
-                                <div class="nav-item dropdown no-arrow">
-                                    <a class="dropdown-toggle nav-link"
-                                       aria-expanded="false"
-                                       data-bs-toggle="dropdown"
-                                       href="#">
+                        <li class="nav-item dropdown no-arrow">
+                            <div class="nav-item dropdown no-arrow">
+                                <a class="dropdown-toggle nav-link"
+                                   aria-expanded="false"
+                                   data-bs-toggle="dropdown"
+                                   href="#">
                                     <span class="d-none d-lg-inline me-2 text-gray-600 small">
                                         <?php echo $_SESSION['fullname']; ?>
                                     </span>
-                                        <img class="border rounded-circle img-profile"
-                                             src="../assets/img/avatars/avatar1.jpeg">
+                                    <img class="border rounded-circle img-profile"
+                                         src="../assets/img/avatars/avatar1.jpeg">
+                                </a>
+
+                                <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
+                                        Profile
                                     </a>
 
-                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
-                                        <a class="dropdown-item" href="#">
-                                            <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
-                                            Profile
-                                        </a>
-
-                                        <div class="dropdown-divider"></div>
+                                    <div class="dropdown-divider"></div>
 
 
-                                        <!--LOG OUT START-->
-                                        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
-                                            Logout
-                                        </a>
-                                        <!--LOG OUT END-->
+                                    <!--LOG OUT START-->
+                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
+                                        <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
+                                        Logout
+                                    </a>
+                                    <!--LOG OUT END-->
 
 
-                                    </div>
                                 </div>
-                            </li>
+                            </div>
+                        </li>
 
                         <!--PROFILE END-->
 
@@ -111,111 +111,115 @@ if ($_SESSION['loginas'] != 'administrator') {
                     <div class="card-body">
 
                         <?php
-                        if (isset($_GET['message'])) {
-                            if ($_GET['message'] == "update-profile-success") {
-                                echo "<div class='alert alert-success' role='alert'>Profile has successfully updated!</div>";
-                            } else if ($_GET['message'] == "update-profile-fail") {
-                                echo "<div class='alert alert-danger' role='alert'>Error! The profile can't updated</div>";
+                        if (isset($_GET['profile-message'])) {
+                            if ($_GET['profile-message'] == "update-profile-success") {
+                                echo "<div class='alert alert-success' role='alert'>Profile successfully updated.</div>";
+                            } else if ($_GET['profile-message'] == "update-profile-fail") {
+                                echo "<div class='alert alert-danger' role='alert'>Update profile failed. Try again.</div>";
+                            } else if ($_GET['profile-message'] == "update-profile-invalid") {
+                                echo "<div class='alert alert-danger' role='alert'>Update profile failed. Try another details.</div>";
+                            } else if ($_GET['profile-message'] == "staff-id-failed") {
+                                echo "<div class='alert alert-danger' role='alert'>Staff ID already taken. Try another.</div>";
                             }
+
                         }
                         ?>
-
-
-                                <form method="post" action="action/profile-action.php">
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="username">
-                                                    <strong>Full Name</strong>
-                                                </label>
-                                                <input type="hidden"
-                                                       name="userid"
-                                                       value="<?php echo $_SESSION['userid']; ?>">
-                                                <input type="hidden"
-                                                       name="schoolid"
-                                                       value="<?php echo $_SESSION['schoolid']; ?>">
-
-                                                <input class="form-control"
-                                                       type="text" id="fullname"
-                                                       placeholder="Full Name"
-                                                       name="fullname"
-                                                       required="required"
-                                                       value="<?php echo $_SESSION['fullname'] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="email">
-                                                    <strong>Email Address</strong>
-                                                </label>
-
-                                                <input class="form-control"
-                                                       type="email"
-                                                       id="email"
-                                                       placeholder="user@example.com"
-                                                       name="email"
-                                                       required="required"
-                                                       value="<?php echo $_SESSION['email'] ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="phone">
-                                                    <strong>Phone</strong>
-                                                </label>
-                                                <input class="form-control"
-                                                       type="number"
-                                                       id="phone"
-                                                       placeholder="0000000000"
-                                                       name="phone"
-                                                       required="required"
-                                                       value="<?php echo $_SESSION['phone']; ?>">
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="staffid">
-                                                    <strong>Staff ID</strong>
-                                                    <br>3
-                                                </label>
-                                                <input class="form-control"
-                                                       type="text"
-                                                       placeholder="000"
-                                                       name="staffid"
-                                                       required="required"
-                                                       value="<?php echo $_SESSION['staffid']; ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="mb-3">
-                                                <label class="form-label" for="position">
-                                                    <strong>Position</strong>
-                                                </label>
-                                                <input class="form-control"
-                                                       type="text"
-                                                       id="position"
-                                                       placeholder="Position"
-                                                       name="position"
-                                                       required="required"
-                                                       value="<?php echo $_SESSION['position']; ?>">
-                                            </div>
-                                        </div>
-                                    </div>
-
+                        <form method="post" action="action/profile-action.php">
+                            <div class="row">
+                                <div class="col">
                                     <div class="mb-3">
-                                        <button class="btn btn-primary btn-sm"
-                                                type="submit"
-                                                style="background: var(--bs-success);">
-                                            Save Settings
-                                        </button>
+                                        <label class="form-label" for="username">
+                                            <strong>Full Name</strong>
+                                        </label>
+                                        <input type="hidden"
+                                               name="userid"
+                                               value="<?php echo $_SESSION['userid']; ?>">
+                                        <input type="hidden"
+                                               name="schoolid"
+                                               value="<?php echo $_SESSION['schoolid']; ?>">
+
+                                        <input class="form-control"
+                                               type="text" id="fullname"
+                                               placeholder="Full Name"
+                                               name="fullname"
+                                               required="required"
+                                               value="<?php echo $_SESSION['fullname'] ?>">
                                     </div>
-                                </form>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="email">
+                                            <strong>Email Address</strong>
+                                        </label>
+
+                                        <input class="form-control"
+                                               type="email"
+                                               id="email"
+                                               placeholder="user@example.com"
+                                               name="email"
+                                               required="required"
+                                               value="<?php echo $_SESSION['email'] ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="phone">
+                                            <strong>Phone</strong>
+                                        </label>
+                                        <input class="form-control"
+                                               type="number"
+                                               id="phone"
+                                               placeholder="0000000000"
+                                               name="phone"
+                                               required="required"
+                                               value="<?php echo $_SESSION['phone']; ?>">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="staffid">
+                                            <strong>Staff ID</strong>
+                                            <br>
+                                        </label>
+                                        <input class="form-control"
+                                               type="text"
+                                               placeholder="000"
+                                               name="staffid"
+                                               required="required"
+                                               value="<?php echo $_SESSION['staffid']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="position">
+                                            <strong>Position</strong>
+                                        </label>
+                                        <input class="form-control"
+                                               type="text"
+                                               id="position"
+                                               placeholder="Position"
+                                               name="position"
+                                               required="required"
+                                               value="<?php echo $_SESSION['position']; ?>">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <button class="btn btn-primary btn-sm"
+                                        type="submit"
+                                        style="background: var(--bs-success);">
+                                    Save Settings
+                                </button>
+                            </div>
+                        </form>
 
                     </div>
                 </div>
@@ -229,66 +233,55 @@ if ($_SESSION['loginas'] != 'administrator') {
                     <div class="card-body">
 
                         <?php
-                        if (isset($_GET['message'])) {
-                            if ($_GET['message'] == "update-password-success") {
-                                echo "<div class='alert alert-success' role='alert'>Password has successfully updated!</div>";
-                            } else if ($_GET['message'] == "update-password-fail") {
-                                echo "<div class='alert alert-danger' role='alert'>Error! Password can't updated</div>";
-                            }
-                            else if ($_GET['message'] == "update-password-match") {
-                                echo "<div class='alert alert-danger' role='alert'>Password is not the same</div>";
+                        if (isset($_GET['password-message'])) {
+                            if ($_GET['password-message'] == "update-password-success") {
+                                echo "<div class='alert alert-success' role='alert'>Password successfully updated.</div>";
+                            } else if ($_GET['password-message'] == "update-password-fail") {
+                                echo "<div class='alert alert-danger' role='alert'>Update password failed. Try again.</div>";
+                            } else if ($_GET['password-message'] == "update-password-match") {
+                                echo "<div class='alert alert-danger' role='alert'>Password is not the same.</div>";
                             }
                         }
                         ?>
 
-                        <?php
-                        include 'action/connection.php';
 
-                        $userid = $_SESSION['userid'];
+                        <form method="post" action="action/profile-password-action.php">
+                            <div class="row mb-3">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
 
-                        $sql = mysqli_query($connect, "select * from user where userid='$userid'");
-                        while ($datauser = mysqli_fetch_array($sql)) {
-                            ?>
-                            <form method="post" action="action/profile-password-action.php">
-                                <div class="row mb-3">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="hidden"
+                                           name="userid"
+                                           value="<?php echo $_SESSION['userid']; ?>">
 
-                                        <input type="hidden"
-                                               name="userid"
-                                               value="<?php echo $datauser['userid']; ?>">
+                                    <input type="hidden"
+                                           name="password"
+                                           value="<?php echo $_SESSION['password']; ?>">
 
-                                        <input type="hidden"
-                                               name="password"
-                                               value="<?php echo $datauser['password']; ?>">
-
-                                        <input id="examplePasswordInput"
-                                               class="form-control form-control-user"
-                                               type="password"
-                                               placeholder="Password"
-                                               name="password"
-                                               required="required"/>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input id="exampleRepeatPasswordInput"
-                                               class="form-control form-control-user"
-                                               type="password"
-                                               placeholder="Repeat Password"
-                                               name="password_repeat"
-                                               required="required"/>
-                                    </div>
+                                    <input id="examplePasswordInput"
+                                           class="form-control form-control-user"
+                                           type="password"
+                                           placeholder="Password"
+                                           name="password"
+                                           required="required"/>
                                 </div>
-                                <div class="mb-3">
-                                    <button class="btn btn-primary btn-sm"
-                                            type="submit"
-                                            style="background: var(--bs-green);">
-                                        Save Settings
-                                    </button>
+                                <div class="col-sm-6">
+                                    <input id="exampleRepeatPasswordInput"
+                                           class="form-control form-control-user"
+                                           type="password"
+                                           placeholder="Repeat Password"
+                                           name="password_repeat"
+                                           required="required"/>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary btn-sm"
+                                        type="submit"
+                                        style="background: var(--bs-green);">
+                                    Save Settings
+                                </button>
+                            </div>
+                        </form>
 
-                            <?php
-                        }
-                        ?>
                     </div>
                 </div>
                 <!--CHANGE PASSWORD END-->

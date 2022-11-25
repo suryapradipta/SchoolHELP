@@ -1,11 +1,6 @@
 <?php
 session_start();
-
 include "connection.php";
-
-//$username = $_POST["username"];
-//$password = $_POST['password'];
-
 
 if (isset($_POST['username']) != NULL) {
     $username = $_POST['username'];
@@ -20,9 +15,10 @@ if (isset($_POST['username']) != NULL) {
             $_SESSION['fullname'] = $row["fullname"];
             $_SESSION['email'] = $row["email"];
             $_SESSION['phone'] = $row["phone"];
+            $_SESSION['username'] = $row["username"];
+            $_SESSION['password'] = $row["password"];
         }
 
-//        $_SESSION['username'] = $username;
 
         $adminLogin = ("SELECT * FROM schooladmin WHERE userid='" . $_SESSION['userid'] . "'");
         $dataAdmin = $connect->query($adminLogin);
@@ -57,7 +53,7 @@ if (isset($_POST['username']) != NULL) {
         }
 
     } else {
-        header("location:../login.php?message=fail");
+        header("location:../login.php?login-message=login-failed");
     }
 }
 ?>
