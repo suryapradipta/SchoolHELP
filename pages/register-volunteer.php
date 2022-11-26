@@ -22,6 +22,15 @@
                         <div class="text-center">
                             <h4 class="text-dark mb-4">Create an Account!</h4>
                         </div>
+                        <?php
+                                if (isset($_GET['message'])) {
+                                    if ($_GET['message'] == "register-success") {
+                                    echo "<div class='alert alert-success' role='alert'>User Created Sucessfully</div>";
+                                    } else if ($_GET['message'] == "username-taken") {
+                                    echo "<div class='alert alert-danger' role='alert'>Username already taken, try again</div>";
+                                    } 
+                                }
+                            ?>
                         <form class="user">
                             <div class="row mb-3">
                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="username" placeholder="Username" name="username" required="required"></div>
