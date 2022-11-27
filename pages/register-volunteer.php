@@ -22,25 +22,34 @@
                         <div class="text-center">
                             <h4 class="text-dark mb-4">Create an Account!</h4>
                         </div>
-                        <form class="user">
+                        <?php
+                                if (isset($_GET['message'])) {
+                                    if ($_GET['message'] == "register-success") {
+                                    echo "<div class='alert alert-success' role='alert'>User Created Sucessfully</div>";
+                                    } else if ($_GET['message'] == "username-taken") {
+                                    echo "<div class='alert alert-danger' role='alert'>Username already taken, try again</div>";
+                                    } 
+                                }
+                            ?>
+                        <form class="user" method="post" action=action/register-volunteer-action.php>
                             <div class="row mb-3">
-                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="username" placeholder="Username" name="username"></div>
-                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password"></div>
+                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="username" placeholder="Username" name="username" required="required"></div>
+                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password" required="required"></div>
                             </div>
-                            <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email">
+                            <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email" required="required">
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input class="form-control form-control-user" type="text" id="fullname" placeholder="Full Name" name="fullname">
+                                    <input class="form-control form-control-user" type="text" id="fullname" placeholder="Full Name" name="fullname" required="required">
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <input class="form-control form-control-user" type="number" id="phone" placeholder="Phone Number" >
+                                    <input class="form-control form-control-user" type="number" id="phone" placeholder="Phone Number" name="phone" required="required">
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="occupation" placeholder="Occupation" name="occupation"></div>
-                                <div class="col-sm-6"><input class="form-control" id="dateofbirth" type="date"></div>
+                                <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="occupation" placeholder="Occupation" name="occupation" required="required"></div>
+                                <div class="col-sm-6"><input class="form-control" id="dateofbirth" type="date" name="dateofbirth" required="required"></div>
                             </div>
                             <button class="btn btn-primary d-block btn-user w-100" type="submit">Register Account</button>
                             <hr>
