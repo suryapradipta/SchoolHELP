@@ -31,10 +31,10 @@
                                     } 
                                 }
                             ?>
-                        <form class="user">
+                        <form class="user" method="post" action=action/register-volunteer-action.php>
                             <div class="row mb-3">
                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="username" placeholder="Username" name="username" required="required"></div>
-                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password"></div>
+                                <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Password" name="password" required="required"></div>
                             </div>
                             <div class="mb-3"><input class="form-control form-control-user" type="email" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address" name="email" required="required">
                             </div>
@@ -44,12 +44,12 @@
                                 </div>
 
                                 <div class="col-sm-6">
-                                    <input class="form-control form-control-user" type="number" id="phone" placeholder="Phone Number" required="required">
+                                    <input class="form-control form-control-user" type="number" id="phone" placeholder="Phone Number" name="phone" required="required">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text" id="occupation" placeholder="Occupation" name="occupation" required="required"></div>
-                                <div class="col-sm-6"><input class="form-control" id="dateofbirth" type="date" required="required"></div>
+                                <div class="col-sm-6"><input class="form-control" id="dateofbirth" type="date" name="dateofbirth" required="required"></div>
                             </div>
                             <button class="btn btn-primary d-block btn-user w-100" type="submit">Register Account</button>
                             <hr>
