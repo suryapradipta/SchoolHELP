@@ -22,7 +22,7 @@
                         <div class="text-center">
                             <h4 class="text-dark mb-4">Create an Account!</h4>
                         </div>
-                        <?php
+                        <?php //a notification that will appear when the account has been successfully created and when the username has been used
                                 if (isset($_GET['message'])) {
                                     if ($_GET['message'] == "register-success") {
                                     echo "<div class='alert alert-success' role='alert'>User Created Sucessfully</div>";
