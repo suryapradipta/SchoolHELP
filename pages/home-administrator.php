@@ -124,31 +124,45 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                 <form>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <div class="mb-3"><label class="form-label" for="username"><strong>Name</strong></label>
-                                                                <input id="username" class="form-control"
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="username">
+                                                                    <strong>Name</strong>
+                                                                </label>
+                                                                <input id="username"
+                                                                       class="form-control"
                                                                        value="<?php echo $_SESSION['fullname']; ?>" readonly/>
                                                             </div>
                                                         </div>
                                                         <div class="col">
-                                                            <div class="mb-3"><label class="form-label" for="email">
-                                                                    <strong>Position</strong></label>
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="email">
+                                                                    <strong>Position</strong>
+                                                                </label>
                                                                 <input id="email" class="form-control"
-                                                                       type="email"
-                                                                       placeholder="user@example.com"
                                                                        value="<?php echo $_SESSION['position']; ?>" readonly/>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
-                                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input id="first_name" class="form-control"
-                                                                                                                                                                   type="text" placeholder="John"
-                                                                                                                                                                   name="first_name"/></div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="first_name">
+                                                                    <strong>School ID</strong>
+                                                                </label>
+                                                                <input id="first_name" class="form-control"
+                                                                       value="<?php echo $_SESSION['schoolid']; ?>" readonly/>
+                                                            </div>
                                                         </div>
+
+
                                                         <div class="col">
-                                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input id="last_name" class="form-control"
-                                                                                                                                                                 type="text" placeholder="Doe"
-                                                                                                                                                                 name="last_name"/></div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label" for="last_name">
+                                                                    <strong>School Name</strong>
+                                                                </label>
+                                                                <input id="last_name" class="form-control"
+
+                                                                       value="<?php echo $_SESSION['schoolname']; ?>" readonly/>
                                                         </div>
                                                     </div>
                                                     <div class="mb-3"></div>

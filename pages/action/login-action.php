@@ -32,6 +32,13 @@ if (isset($_POST['username']) != NULL) {
                 $_SESSION['userid'] = $row["userid"];
                 $_SESSION['schoolid'] = $row["schoolid"];
 
+                $getschoolname = ("SELECT * FROM school WHERE schoolid='" . $_SESSION['schoolid'] . "'");
+                $schoolname = $connect->query($getschoolname);
+                while ($row = $schoolname->fetch_assoc()) {
+                    $_SESSION['schoolname'] = $row["schoolname"];
+                }
+
+
                 $_SESSION['loginas'] = 'administrator';
             }
 
