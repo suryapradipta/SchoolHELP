@@ -69,7 +69,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                         <?php echo $_SESSION['fullname']; ?>
                                     </span>
                                     <img class="border rounded-circle img-profile"
-                                         src="../assets/img/avatars/avatar1.jpeg">
+                                         src="../assets/img/avatars/avatar0.png">
                                 </a>
 
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
@@ -106,6 +106,60 @@ if ($_SESSION['loginas'] != 'administrator') {
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
                     <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate
                         Report</a>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-lg-4">
+                        <div class="card mb-3">
+                            <div class="card-body text-center shadow">
+                                <img class="rounded-circle mb-3 mt-4" src="../assets/img/avatars/avatar0.png" width="160" height="160"/>
+                                <div class="mb-3"></div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card shadow mb-3">
+                                            <div class="card-header py-3">
+                                                <p class="text-primary m-0 fw-bold">Profile Overview</p>
+                                            </div>
+                                            <div class="card-body">
+                                                <form>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="username"><strong>Name</strong></label>
+                                                                <input id="username" class="form-control"
+                                                                       value="<?php echo $_SESSION['fullname']; ?>" readonly/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="email">
+                                                                    <strong>Position</strong></label>
+                                                                <input id="email" class="form-control"
+                                                                       type="email"
+                                                                       placeholder="user@example.com"
+                                                                       value="<?php echo $_SESSION['position']; ?>" readonly/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="first_name"><strong>First Name</strong></label><input id="first_name" class="form-control"
+                                                                                                                                                                   type="text" placeholder="John"
+                                                                                                                                                                   name="first_name"/></div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="mb-3"><label class="form-label" for="last_name"><strong>Last Name</strong></label><input id="last_name" class="form-control"
+                                                                                                                                                                 type="text" placeholder="Doe"
+                                                                                                                                                                 name="last_name"/></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3"></div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!--<div class="row">
