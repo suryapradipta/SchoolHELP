@@ -27,9 +27,27 @@ if ($_SESSION['loginas'] != 'administrator') {
             </a>
             <hr class="sidebar-divider my-0">
             <ul class="navbar-nav text-light" id="accordionSidebar">
-                <li class="nav-item"><a class="nav-link active" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="submit-request.php"><i class="fas fa-hand-holding"></i><span>Submit Request</span></a></li>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       href="home-administrator.php">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item"><a
+                            class="nav-link"
+                            href="register-school.php">
+                        <i class="fas fa-file-medical"></i>
+                        <span>Register School</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="submit-request.php">
+                        <i class="fas fa-hand-holding"></i>
+                        <span>Submit Request</span>
+                    </a>
+                </li>
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
@@ -41,14 +59,28 @@ if ($_SESSION['loginas'] != 'administrator') {
             <!--HEADER START-->
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                 <div class="container-fluid">
-                    <button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                    <button class="btn btn-link d-md-none rounded-circle me-3"
+                            id="sidebarToggleTop" type="button">
+                        <i class="fas fa-bars"></i></button>
                     <ul class="navbar-nav flex-nowrap ms-auto">
-                        <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
-                            <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                        <li class="nav-item dropdown d-sm-none no-arrow">
+                            <a class="dropdown-toggle nav-link"
+                               aria-expanded="false"
+                               data-bs-toggle="dropdown"
+                               href="#">
+                                <i class="fas fa-search"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in"
+                                 aria-labelledby="searchDropdown">
                                 <form class="me-auto navbar-search w-100">
-                                    <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                    <div class="input-group">
+                                        <input class="bg-light form-control border-0 small"
+                                               type="text" placeholder="Search for ...">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button>
+                                            <button class="btn btn-primary py-0"
+                                                    type="button">
+                                                <i class="fas fa-search"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -58,7 +90,6 @@ if ($_SESSION['loginas'] != 'administrator') {
 
 
                         <!--PROFILE START-->
-
                         <li class="nav-item dropdown no-arrow">
                             <div class="nav-item dropdown no-arrow">
                                 <a class="dropdown-toggle nav-link"
@@ -104,10 +135,11 @@ if ($_SESSION['loginas'] != 'administrator') {
             <div class="container-fluid">
 
                 <div class="d-sm-flex justify-content-between align-items-center mb-4">
-                    <h3 class="text-dark mb-0">Dashboard</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate
-                        Report</a>
+                    <h3 class="text-dark mb-0">Dashboard</h3>
+
                 </div>
 
+                <!--PROFILE OVERVIEW START-->
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <div class="card mb-3">
@@ -118,7 +150,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                     <div class="col">
                                         <div class="card shadow mb-3">
                                             <div class="card-header py-3">
-                                                <p class="text-primary m-0 fw-bold">Profile Overview</p>
+                                                <p class="text-primary m-0 fw-bold">Profile</p>
                                             </div>
                                             <div class="card-body">
                                                 <form>
@@ -154,7 +186,6 @@ if ($_SESSION['loginas'] != 'administrator') {
                                                             </div>
                                                         </div>
 
-
                                                         <div class="col">
                                                             <div class="mb-3">
                                                                 <label class="form-label" for="last_name">
@@ -175,78 +206,8 @@ if ($_SESSION['loginas'] != 'administrator') {
                         </div>
                     </div>
                 </div>
+                <!--PROFILE OVERVIEW END-->
 
-                <!--<div class="row">
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-primary py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-primary fw-bold text-xs mb-1">
-                                            <span>Number of Schools</span>
-                                        </div>
-                                        <div class="text-dark fw-bold h5 mb-0">
-
-                                            <span>Not yet assign</span>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-success py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Earnings (annual)</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>$215,000</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-info py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Tasks</span></div>
-                                        <div class="row g-0 align-items-center">
-                                            <div class="col-auto">
-                                                <div class="text-dark fw-bold h5 mb-0 me-3"><span>50%</span></div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="progress progress-sm">
-                                                    <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span
-                                                                class="visually-hidden">50%</span></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-start-warning py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col me-2">
-                                        <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>Pending Requests</span></div>
-                                        <div class="text-dark fw-bold h5 mb-0"><span>18</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
             </div>
         </div>
 
