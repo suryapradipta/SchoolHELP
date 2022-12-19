@@ -177,7 +177,7 @@ $viewid = $_GET['id'];
                             <tbody>
 
                             <?php
-                            include "../../connector/connector.php";
+                            include "action/connection.php";
                             $query = ("SELECT * FROM request  
                                         INNER JOIN offer ON request.requestid = offer.requestid 
                                         INNER JOIN volunteer ON offer.userid = volunteer.userid 
@@ -192,7 +192,7 @@ $viewid = $_GET['id'];
                                     echo '<td>'.$row["offerid"].'</td>';
                                     echo '<td>'.$row["offerstatus"].'</td>';
                                     echo '<td><button id="myInput" type="button" class="btn btn-outline-primary"
-                                                            onclick="window.location.href='."'select-offer?id=".$viewid."'".';">
+                                                            onclick="window.location.href='."'select-offer?id=".$row["offerid"]."'".';">
                                                             View
                                                   </button>
                                               </td>';
