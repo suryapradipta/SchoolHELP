@@ -147,7 +147,7 @@ $viewid = $_GET['id'];
                                         request.requestid = offer.requestid INNER JOIN volunteer ON 
                                             offer.userid = volunteer.userid INNER JOIN user ON 
                                              volunteer.userid = user.userid WHERE request.requestid = $viewid;");
-
+//                            echo $viewid;
                             $result = mysqli_query($connect, $query);
 
                             if ($result -> num_rows > 0) {
@@ -164,65 +164,6 @@ $viewid = $_GET['id'];
                             </tbody>
                         </table>
                     </div>
-
-
-
-
-
-
-
-
-
-                    <!--                    <div class="card-body">-->
-                    <!--                        <table id="req-form" class="table overflow-auto" style="width: 100%;">-->
-                    <!--                            <thead>-->
-                    <!--                            <tr>-->
-                    <!--                                <th>Offer ID</th>-->
-                    <!--                                <th>Offer Date</th>-->
-                    <!--                                <th>Remarks</th>-->
-                    <!--                                <th>Name</th>-->
-                    <!--                                <th>Age</th>-->
-                    <!--                                <th>Occupation</th>-->
-                    <!--                                <th>Offer Status</th>-->
-                    <!--                                <th>Action</th>-->
-                    <!--                            </tr>-->
-                    <!--                            </thead>-->
-                    <!--                            <tbody>-->
-                    <!---->
-                    <!--                            --><?php
-                    //                            include "action/connection.php";
-                    //                            $query = ("SELECT * FROM request  INNER JOIN offer ON request.requestid = offer.requestid
-                    //                                        INNER JOIN volunteer ON offer.userid = volunteer.userid
-                    //                                        INNER JOIN user ON volunteer.userid = user.userid
-                    //                                        WHERE request.requestid = $viewid;");
-                    //
-                    //
-                    //
-                    //                            $result = mysqli_query($connect, $query);
-                    //
-                    //                            if ($result -> num_rows > 0) {
-                    //                                while($row = $result->fetch_assoc()) {
-                    //                                    echo '<tr>';
-                    //                                    echo '<td>'.$row["offerid"].'</td>';
-                    //                                    echo '<td>'.$row["offerdate"].'</td>';
-                    //                                    echo '<td>'.$row["remarks"].'</td>';
-                    //                                    echo '<td>'.$row["fullname"].'</td>';
-                    //                                    $datenow = date("Y-m-d");
-                    //                                    $agenow = date_diff(date_create($row["dateofbirth"]), date_create($datenow));
-                    //                                    echo '<td>'.$agenow->format('%y').'</td>';
-                    //                                    echo '<td>'.$row["occupation"].'</td>';
-                    //                                    echo '<td>'.$row["offerstatus"].'</td>';
-                    //                                    echo '<td><button type="button" class="btn btn-outline-info" onclick="acceptoffers('. $row["offersid"] .",'". $row["email"] ."')".';">View</button></td>';
-                    //
-                    //                                    echo '</tr>';
-                    //                                }
-                    //                            }
-                    //                            ?>
-                    <!--                            </tbody>-->
-                    <!---->
-                    <!--                        </table>-->
-                    <!--                    </div>-->
-                    <!--OFFER END-->
 
                 </div>
 

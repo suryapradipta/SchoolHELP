@@ -192,7 +192,7 @@ $viewid = $_GET['id'];
                                     echo '<td>'.$row["offerid"].'</td>';
                                     echo '<td>'.$row["offerstatus"].'</td>';
                                     echo '<td><button id="myInput" type="button" class="btn btn-outline-primary"
-                                                            onclick="window.location.href='."'select-offer?id=".$row["offerid"]."'".';">
+                                                            onclick="window.location.href='."'select-offer?id=".$row["requestid"]."'".';">
                                                             View
                                                   </button>
                                               </td>';
