@@ -4,8 +4,7 @@ include "connection.php";
 
 if (isset($_POST['username']) != NULL) {
     $username = $_POST['username'];
-    $password = ($_POST['password']);
-
+    $password = md5($_POST['password']);
     $query = ("SELECT * FROM user where username='$username' and password='$password'");
     $result = mysqli_query($connect, $query);
 
@@ -59,7 +58,8 @@ if (isset($_POST['username']) != NULL) {
         }
 
     } else {
-        header("location:../login.php?login-message=login-failed");
+        echo $password;
+        // header("location:../login.php?login-message=login-failed");
     }
 }
 ?>

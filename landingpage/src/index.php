@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- php to count for data in the pages -->
+<?php 
+include '../../pages/action/connection.php';
 
+$voluteers = mysqli_query($connect, "SELECT * FROM volunteer");
+$numofvol = mysqli_num_rows($voluteers);
+
+$request = mysqli_query($connect, "SELECT * FROM request");
+$numofreq = mysqli_num_rows($request);
+
+$offers = mysqli_query($connect, "SELECT * FROM offer");
+$numofoffer = mysqli_num_rows($offers);
+
+$schools = mysqli_query($connect, "SELECT * FROM school");
+$numofschool = mysqli_num_rows($schools);
+?>
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -138,7 +153,7 @@
                     <div class="count-box">
                         <i class="bi bi-emoji-smile"></i>
                         <div>
-                            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="<?php echo $numofvol ?>" data-purecounter-duration="1" class="purecounter"></span>
                             <p>Volunteers</p>
                         </div>
                     </div>
@@ -148,7 +163,7 @@
                     <div class="count-box">
                         <i class="bi bi-journal-richtext" style="color: #ee6c20;"></i>
                         <div>
-                            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="<?php echo $numofreq ?>" data-purecounter-duration="1" class="purecounter"></span>
                             <p>Requests Assistance</p>
                         </div>
                     </div>
@@ -158,7 +173,7 @@
                     <div class="count-box">
                         <i class="bi bi-headset" style="color: #15be56;"></i>
                         <div>
-                            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="<?php echo $numofoffer ?>" data-purecounter-duration="1" class="purecounter"></span>
                             <p>Offers</p>
                         </div>
                     </div>
@@ -168,7 +183,7 @@
                     <div class="count-box">
                         <i class="bi bi-people" style="color: #bb0852;"></i>
                         <div>
-                            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                            <span data-purecounter-start="0" data-purecounter-end="<?php echo $numofschool ?>" data-purecounter-duration="1" class="purecounter"></span>
                             <p>Schools</p>
                         </div>
                     </div>
@@ -357,113 +372,6 @@
 
 
 
-
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-
-        <div class="container" data-aos="fade-up">
-
-            <header class="section-header">
-                <h2>Testimonials</h2>
-                <p>What they are saying about us</p>
-            </header>
-
-            <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="200">
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                Great job!
-                            </p>
-                            <div class="profile mt-auto">
-                                <img src="../assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                                <h3>Saul Goodman</h3>
-                                <h4>Ceo &amp; Founder</h4>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet
-                                legam anim culpa.
-                            </p>
-                            <div class="profile mt-auto">
-                                <img src="../assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                                <h3>Sara Wilsson</h3>
-                                <h4>Designer</h4>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint
-                                minim.
-                            </p>
-                            <div class="profile mt-auto">
-                                <img src="../assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                                <h3>Jena Karlis</h3>
-                                <h4>Store Owner</h4>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem
-                                dolore labore illum veniam.
-                            </p>
-                            <div class="profile mt-auto">
-                                <img src="../assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                                <h3>Matt Brandon</h3>
-                                <h4>Freelancer</h4>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="stars">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                            </div>
-                            <p>
-                                Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam
-                                culpa fore nisi cillum quid.
-                            </p>
-                            <div class="profile mt-auto">
-                                <img src="../assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                                <h3>John Larson</h3>
-                                <h4>Entrepreneur</h4>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </div>
-
-    </section><!-- End Testimonials Section -->
-
     <!-- ======= Team Section ======= -->
     <section id="team" class="team">
 
@@ -489,8 +397,8 @@
                         </div>
                         <div class="member-info">
                             <h4>I Nyoman Surya Pradipta</h4>
-                            <span>Chief Executive Officer</span>
-                            <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p>
+                            <span>Project Leader</span>
+                            <p>Knowledge is power</p>
                         </div>
                     </div>
                 </div>
@@ -507,9 +415,9 @@
                             </div>
                         </div>
                         <div class="member-info">
-                            <h4>Sarah Jhonson</h4>
-                            <span>Product Manager</span>
-                            <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis. Voluptate sed quas reiciendis animi neque sapiente.</p>
+                            <h4>Made Dhiyo Raditya Diarsha</h4>
+                            <span>Team Member</span>
+                            <p>Make it work, make it right, make it fast.</p>
                         </div>
                     </div>
                 </div>
@@ -526,9 +434,9 @@
                             </div>
                         </div>
                         <div class="member-info">
-                            <h4>William Anderson</h4>
-                            <span>CTO</span>
-                            <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut architecto porro aspernatur molestiae modi.</p>
+                            <h4>I Wahyu Purna Astawa</h4>
+                            <span>Team Member</span>
+                            <p>Simplicity is the soul of efficiency.</p>
                         </div>
                     </div>
                 </div>
@@ -545,9 +453,9 @@
                             </div>
                         </div>
                         <div class="member-info">
-                            <h4>Amanda Jepson</h4>
-                            <span>Accountant</span>
-                            <p>Rerum voluptate non adipisci animi distinctio et deserunt amet voluptas. Quia aut aliquid doloremque ut possimus ipsum officia.</p>
+                            <h4>...</h4>
+                            <span>Coming Soon</span>
+                            <p>....</p>
                         </div>
                     </div>
                 </div>
@@ -559,7 +467,7 @@
     </section><!-- End Team Section -->
 
     <!-- ======= Clients Section ======= -->
-    <section id="clients" class="clients">
+    <!-- <section id="clients" class="clients">
 
         <div class="container" data-aos="fade-up">
 
@@ -583,7 +491,8 @@
             </div>
         </div>
 
-    </section><!-- End Clients Section -->
+    </section> -->
+    <!-- End Clients Section -->
 
 
     <!-- ======= Contact Section ======= -->
@@ -605,21 +514,24 @@
                             <div class="info-box">
                                 <i class="bi bi-geo-alt"></i>
                                 <h3>Address</h3>
-                                <p>A108 Adam Street,<br>New York, NY 535022</p>
+                                <p>
+                                    Jl. Raya Puputan No.86<br>Dangin Puri Klod, Kota Denpasar,
+                                    Bali 80234. Indonesia
+                                </p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-telephone"></i>
                                 <h3>Call Us</h3>
-                                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                                <p>+62 812345678</p>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="info-box">
                                 <i class="bi bi-envelope"></i>
                                 <h3>Email Us</h3>
-                                <p>info@example.com<br>contact@example.com</p>
+                                <p>dhiyo.rd@gmail.com</p>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -684,9 +596,10 @@
                 <div class="col-lg-5 col-md-12 footer-info">
                     <a href="index.php" class="logo d-flex align-items-center">
                         <img src="../assets/img/logo.png" alt="">
-                        <span>FlexStart</span>
+                        <span>SchoolHELP</span>
                     </a>
-                    <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+                    <p>We help kids who need to make up for "lost learning" 
+                        Especially those who lack the technical means to seek online education</p>
                     <div class="social-links mt-3">
                         <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -698,33 +611,31 @@
                 <div class="col-lg-2 col-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">About us</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Services</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Terms of service</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#hero">Home</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#about">About us</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#team">Team</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#contact">Contact</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="../../pages/login">Get Started</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bi bi-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#features">Submit Resource Request</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#features">Submit Tutorial Request</a></li>
+                        <li><i class="bi bi-chevron-right"></i> <a href="#features">Submit Offer</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
                     <h4>Contact Us</h4>
                     <p>
-                        A108 Adam Street <br>
-                        New York, NY 535022<br>
-                        United States <br><br>
-                        <strong>Phone:</strong> +1 5589 55488 55<br>
-                        <strong>Email:</strong> info@example.com<br>
+                        Jl. Raya Puputan No.86<br>
+                        Dangin Puri Klod, Kota Denpasar, Bali 80234<br>
+                        Indonesia<br><br>
+                        <strong>Phone:</strong> +62 812345678<br>
+                        <strong>Email:</strong> dhiyo.rd@gmail.com<br>
                     </p>
 
                 </div>

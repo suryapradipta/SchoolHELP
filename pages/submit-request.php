@@ -30,8 +30,6 @@ if ($_SESSION['loginas'] != 'administrator') {
                     <li class="nav-item"><a class="nav-link " href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                     <li class="nav-item"><a class="nav-link" href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
                     <li class="nav-item"><a class="nav-link active" href="submit-request.php"><i class="fas fa-hand-holding"></i><span>Submit Request</span></a></li>
-                    <li class="nav-item"><a class="nav-link " href="view-request-administrator.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
-
                 </ul>
                 <div class="text-center d-none d-md-inline">
                     <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
