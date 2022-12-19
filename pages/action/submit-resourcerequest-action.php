@@ -11,7 +11,7 @@ $resourcetype = $_POST['resourcetype'];
 $schoolid = $_SESSION['schoolid'];
 
 $sql = mysqli_query($connect, "INSERT INTO `request` (`schoolid`, `requestid`, `requestdate`, `requeststatus`, `description`)
-    VALUES ('$schoolid', '', '$currentdate', 'NEW', '$resourcedescription')");
+    VALUES ('$schoolid', NULL, '$currentdate', 'NEW', '$resourcedescription')");
 
 $lastida = $connect->insert_id;
 

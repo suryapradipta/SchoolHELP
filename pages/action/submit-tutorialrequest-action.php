@@ -13,7 +13,7 @@ $studentnumber = $_POST['studentnum'];
 $schoolid = $_SESSION['schoolid'];
 
 $sql = mysqli_query($connect, "INSERT INTO `request` (`schoolid`, `requestid`, `requestdate`, `requeststatus`, `description`)
-    VALUES ('$schoolid', '', '$currentdate', 'NEW', '$tutorialdescription')");
+    VALUES ('$schoolid', NULL, '$currentdate', 'NEW', '$tutorialdescription')");
 
 $lastid = $connect->insert_id;
 

@@ -16,7 +16,7 @@ $validuser = mysqli_num_rows(mysqli_query($connect, "SELECT * FROM user WHERE us
 if ($validuser == 0){
     //get username, password, fullname, email, phone, and auto id
     $sql = mysqli_query($connect, "INSERT INTO `user` (`userid`, `username`, `password`, `fullname`, `email`, `phone`) 
-    VALUES ('', '$username', '$password', '$fullname', '$email', '$phone')");
+    VALUES (NULL, '$username', '$password', '$fullname', '$email', '$phone')");
 
     $lastid = $connect->insert_id;
 
