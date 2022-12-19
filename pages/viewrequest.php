@@ -29,8 +29,8 @@ if($_SESSION['loginas']!="volunteer") {
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item"><a class="nav-link active" href="home-volunteer.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard Volunteer</span></a></li>
-                    <li class="nav-item"><a class="nav-link" href="viewrequest.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="home-volunteer.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard Volunteer</span></a></li>
+                    <li class="nav-item"><a class="nav-link active" href="viewrequest.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
                 </ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
@@ -79,46 +79,42 @@ if($_SESSION['loginas']!="volunteer") {
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4">My Offer</h3>
-                    <?php
-                        if (isset($_GET['submit-offer'])) {
-                            if ($_GET['submit-offer'] == "offer-success") {
-                                echo "<div class='alert alert-success' role='alert'>Offer Submitted Sucessfully</div>";
-                            } 
-                            else
-                            {
-                                echo "<div class='alert alert-danger' role='alert'>An Error Occured</div>";
-                            }
-                        }
-                    ?>
+                    <h3 class="text-dark mb-4">View Request</h3>
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <p class="text-primary m-0 fw-bold">Offer Details</p>
+                            <p class="text-primary m-0 fw-bold">Request Details</p>
                         </div>
                         <div class="card-body">
                         <table id="schoolinfotable" class="table overflow-auto" style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th>Offer Status</th>
-                                    <th>Offer Date</th>
-                                    <th>Remarks</th>
-                                    <th>Offer for Request ID</th>
+                                    <th>ID</th>
+                                    <th>School</th>
+                                    <th>City</th>
+                                    <th>Request Description</th>
+                                    <th>Request Date</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                     <?php
                                         include "action/connection.php";
-                                        $query = ("SELECT * FROM `offer` INNER JOIN volunteer on offer.userid = volunteer.userid 
-                                        INNER JOIN request on offer.requestid = request.requestid WHERE volunteer.userid = ".$_SESSION['userid']);
+                                        $query = ("SELECT * FROM `school` INNER JOIN request on school.schoolid = request.schoolid");
                                         $result = mysqli_query($connect, $query);
                                         if ($result -> num_rows > 0) {
                                             while ($row = $result->fetch_assoc()) {
                                                 if($row["requeststatus"] == "NEW"){
                                                     echo '<tr>';
-                                                    echo '<td>' . $row["offerstatus"] . '</td>';
-                                                    echo '<td>' . $row["offerdate"] . '</td>';
-                                                    echo '<td>' . $row["remarks"] . '</td>';
                                                     echo '<td>' . $row["requestid"] . '</td>';
+                                                    echo '<td>' . $row["schoolname"] . '</td>';
+                                                    echo '<td>' . $row["city"] . '</td>';
+                                                    echo '<td>' . $row["description"] . '</td>';
+                                                    echo '<td>' . $row["requestdate"] . '</td>';
+                                                    echo '<td><button id="myInput" type="button" class="btn btn-outline-info"
+                                                            onclick="window.location.href='."'viewrequestdetails?id=".$row["requestid"]."'".';">
+                                                            Details
+                                                            </button>
+                                                            </td>';
                                                     echo '</tr>';
                                                 }
                                             }
