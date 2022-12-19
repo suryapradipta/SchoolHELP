@@ -126,55 +126,55 @@ $query = "SELECT * FROM `school` INNER JOIN request ON school.schoolid =
                                                 <div class="row">
                                                     <div class="col-xl-12">
                                                         <div class="mb-3"><label class="form-label"><strong>School Name</strong></label>
-                                                        <input class="form-control" type="text" disabled value ="<?php echo $schoolname; ?>"></div>
+                                                        <input class="form-control" type="text" readonly value ="<?php echo $schoolname; ?>"></div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label"><strong>Request Date</strong></label>
-                                                        <input class="form-control" type="text" disabled value ="<?php echo $requestdate; ?>"></div>
+                                                        <input class="form-control" type="text" readonly value ="<?php echo $requestdate; ?>"></div>
                                                     </div>
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label"><strong>Request Type</strong></label>
-                                                        <input class="form-control" type="text" disabled value ="<?php echo $type; ?>"></div>
+                                                        <input class="form-control" type="text" readonly value ="<?php echo $type; ?>"></div>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
                                                         <div class="mb-3"><label class="form-label"><strong>Description</strong></label>
-                                                        <input class="form-control" type="text" disabled value ="<?php echo $description; ?>"></div>
+                                                        <input class="form-control" type="text" readonly value ="<?php echo $description; ?>"></div>
                                                     </div>
                                                 </div>
                                                 <?php if($type=="Tutorial Request") {?>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="mb-3"><label class="form-label"><strong>Proposed Tutorial Date</strong></label>
-                                                            <input class="form-control" type="text" disabled value ="<?php echo $proposeddate; ?>"></div>
+                                                            <input class="form-control" type="text" readonly value ="<?php echo $proposeddate; ?>"></div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="mb-3"><label class="form-label"><strong>Proposed Tutorial Time</strong></label>
-                                                            <input class="form-control" type="text" disabled value ="<?php echo $proposedtime; ?>"></div>
+                                                            <input class="form-control" type="text" readonly value ="<?php echo $proposedtime; ?>"></div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="mb-3"><label class="form-label"><strong>Student Level</strong></label>
-                                                            <input class="form-control" type="text" disabled value ="<?php echo $studentlevel; ?>"></div>
+                                                            <input class="form-control" type="text" readonly value ="<?php echo $studentlevel; ?>"></div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="mb-3"><label class="form-label"><strong>Num of Student</strong></label>
-                                                            <input class="form-control" type="text" disabled value ="<?php echo $numstudent; ?>"></div>
+                                                            <input class="form-control" type="text" readonly value ="<?php echo $numstudent; ?>"></div>
                                                         </div>
                                                     </div>
                                                 <?php } if($type=="Resource Request") {?>
                                                     <div class="row">
                                                         <div class="col">
                                                             <div class="mb-3"><label class="form-label"><strong>Resource Type</strong></label>
-                                                            <input class="form-control" type="text" disabled value ="<?php echo $resourcetype; ?>"></div>
+                                                            <input class="form-control" type="text" readonly value ="<?php echo $resourcetype; ?>"></div>
                                                         </div>
                                                         <div class="col">
                                                             <div class="mb-3"><label class="form-label"><strong>Resource Number</strong></label>
-                                                            <input class="form-control" type="text" disabled value ="<?php echo $numrequired; ?>"></div>
+                                                            <input class="form-control" type="text" readonly value ="<?php echo $numrequired; ?>"></div>
                                                         </div>
                                                     </div>
                                                 <?php } ?>
