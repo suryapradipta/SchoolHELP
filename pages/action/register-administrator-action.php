@@ -4,7 +4,7 @@
 include 'connection.php';
 
 $username = $_POST['username'];
-$password = $_POST['password'];
+$password = md5($_POST ['password']);
 $fullname = $_POST['fullname'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];

@@ -129,6 +129,77 @@ if ($_SESSION['loginas'] != 'administrator') {
                         Report</a>
                 </div>
 
+                <!-- Stat Row -->
+                <?php 
+                include 'action/connection.php';
+
+                $voluteers = mysqli_query($connect, "SELECT * FROM volunteer");
+                $numofvol = mysqli_num_rows($voluteers);
+
+                $request = mysqli_query($connect, "SELECT * FROM request");
+                $numofreq = mysqli_num_rows($request);
+
+                $offers = mysqli_query($connect, "SELECT * FROM offer");
+                $numofoffer = mysqli_num_rows($offers);
+
+                $schools = mysqli_query($connect, "SELECT * FROM school");
+                $numofschool = mysqli_num_rows($schools);
+                ?>
+                <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Volunteer</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $numofvol ?></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fa fa-user fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-success py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>Request</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $numofreq?></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>Offer</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $numofoffer ?></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fa fa-user fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>School</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span><?php echo $numofschool ?></span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- stat row end -->
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <div class="card mb-3">
