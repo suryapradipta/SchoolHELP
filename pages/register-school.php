@@ -73,7 +73,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                                         <?php echo $_SESSION['fullname']; ?>
                                     </span>
                                     <img class="border rounded-circle img-profile"
-                                         src="../assets/img/avatars/avatar0.png">
+                                         src="../assets/img/avatars/avatar1.jpeg">
                                 </a>
 
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">

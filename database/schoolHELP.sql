@@ -104,9 +104,9 @@ CREATE TABLE `schooladmin` (
 --
 
 INSERT INTO `schooladmin` (`userid`, `schoolid`, `staffid`, `position`) VALUES
-(2, 2, 1, 'school administrator'),
-(1, 1, 66, 'schoolhe666'),
-(41, 24, 2424, '2424');
+(2, 2, 1, 'School Administrator'),
+(1, 1, 66, 'Admin');
+-- (41, 24, 2424, '2424')
 
 -- --------------------------------------------------------
 
@@ -142,10 +142,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `fullname`, `email`, `phone`) VALUES
-(1, 'a', 'a', 'school help administrato udpdate', 'updated666@help.com', '55556666'),
-(2, 'b', 'b', 'schooladministrator2', 'schooladministrator2@help.com', '222'),
-(3, 'c', 'c', 'volunteer', 'volunteer@gmail.com', '123124'),
-(41, 'kk', 'kk', 'kk', 'kk@m.com', '242424');
+(1, 'HELP', 'a', 'HELP Admin', 'admin@help.com', '123'),
+(2, 'stikom', 'a', 'Admin Stikom', 'D@Stikom-bali.ac.id', '123456');
+-- (3, 'c', 'c', 'volunteer', 'volunteer@gmail.com', '123124'),
+-- (41, 'kk', 'kk', 'kk', 'kk@m.com', '242424')
 
 -- --------------------------------------------------------
 
@@ -163,8 +163,8 @@ CREATE TABLE `volunteer` (
 -- Dumping data for table `volunteer`
 --
 
-INSERT INTO `volunteer` (`userid`, `dateofbirth`, `occupation`) VALUES
-(3, '2022-11-08', 'tutor');
+-- INSERT INTO `volunteer` (`userid`, `dateofbirth`, `occupation`) VALUES
+-- (3, '2022-11-08', 'tutor');
 
 --
 -- Indexes for dumped tables
