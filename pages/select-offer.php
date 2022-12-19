@@ -131,7 +131,7 @@ $viewid = $_GET['id'];
                     </div>
 
                     <div class="card-body">
-                        <table id="req-form" class="table overflow-auto" style="width: 100%;">
+                        <table id="req-form" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
                             <tr>
                                 <th>Offer ID</th>
@@ -140,19 +140,7 @@ $viewid = $_GET['id'];
                                 <th>Name</th>
                                 <th>Age</th>
                                 <th>Occupation</th>
-                                <th>Offer Status</th>
                                 <th>Action</th>
-
-                                <?php
-                                include "action/connection.php";
-                                $query = ("SELECT * FROM `request` WHERE requestid= $viewid ");
-                                $result = mysqli_query($connect, $query);
-                                if ($result->num_rows > 0) {
-                                    while ($row = $result->fetch_assoc()) {
-
-                                    }
-                                }
-                                ?>
                             </tr>
                             </thead>
                             <tbody>
@@ -178,12 +166,17 @@ $viewid = $_GET['id'];
                                     $agenow = date_diff(date_create($row["dateofbirth"]), date_create($datenow));
                                     echo '<td>'.$agenow->format('%y').'</td>';
                                     echo '<td>'.$row["occupation"].'</td>';
-                                    echo '<td>'.$row["offerstatus"].'</td>';
-
-                                    echo '</tr>';
+//                                    echo '<td><button type="button" class="btn btn-outline-primary">Accept</button></td>';
+//                                    echo '<td><button type="button" class="btn btn-outline-danger">Close</button></td>';
                                 }
                             }
                             ?>
+                            <td>
+                                <a href="../confirm-vaccination/create.php?vaccinationID=<?php echo $row['vaccinationID']; ?>" class="btn btn-outline-info">Accept</a>
+
+                                <a href="../record-vaccination-admin/create.php?vaccinationID=<?php echo $row['vaccinationID']; ?>" class="btn btn-outline-danger">Close</a>
+                            </td>
+
                             </tbody>
                         </table>
                     </div>

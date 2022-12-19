@@ -110,24 +110,22 @@ if ($_SESSION['loginas'] != 'administrator') {
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">View Request</h3>
                 <div class="card shadow">
+
+
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Request Info</p>
                     </div>
                     <div class="card-body">
-                        <table id="req-form" class="table overflow-auto" style="width: 100%;">
+                        <table id="req-form" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Request Date</th>
                                 <th>Request Status</th>
                                 <th>Action</th>
-
-
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
-
                             <?php
                             include "action/connection.php";
                             $query = ("SELECT * FROM `school` INNER JOIN request on school.schoolid = request.schoolid");

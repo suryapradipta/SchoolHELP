@@ -122,16 +122,18 @@ $viewid = $_GET['id'];
             <!--CONTENT START-->
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">View Request</h3>
+
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Request Info</p>
                     </div>
                     <div class="card-body">
-                        <table id="req-form" class="table overflow-auto" style="width: 100%;">
+                        <table id="req-form" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
                             <tr>
                                 <th>Request ID</th>
                                 <th>Request Description</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -145,6 +147,8 @@ $viewid = $_GET['id'];
                                     echo '<tr>';
                                     echo '<td>' . $viewid . '</td>';
                                     echo '<td>' . $row["description"] . '</td>';
+                                    echo '</tr>';
+
                                 }
                             }
                             ?>
@@ -152,21 +156,18 @@ $viewid = $_GET['id'];
                         </table>
                     </div>
 
-
-
-
-
-
-
-
-
                     <!--OFFER START-->
+                </div>
+
+                <br>
+                <div class="card shadow">
+
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Offer Info</p>
                     </div>
 
                     <div class="card-body">
-                        <table id="req-form" class="table overflow-auto" style="width: 100%;">
+                        <table id="-" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
                             <tr>
                                 <th>Offer ID</th>
@@ -186,13 +187,13 @@ $viewid = $_GET['id'];
 
                             $result = mysqli_query($connect, $query);
 
-                            if ($result -> num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
                                     echo '<tr>';
-                                    echo '<td>'.$row["offerid"].'</td>';
-                                    echo '<td>'.$row["offerstatus"].'</td>';
+                                    echo '<td>' . $row["offerid"] . '</td>';
+                                    echo '<td>' . $row["offerstatus"] . '</td>';
                                     echo '<td><button id="myInput" type="button" class="btn btn-outline-primary"
-                                                            onclick="window.location.href='."'select-offer?id=".$row["offerid"]."'".';">
+                                                            onclick="window.location.href=' . "'select-offer?id=" . $row["offerid"] . "'" . ';">
                                                             View
                                                   </button>
                                               </td>';
@@ -204,66 +205,10 @@ $viewid = $_GET['id'];
                         </table>
                     </div>
 
-
-
-
-
-
-
-
-
-                    <!--                    <div class="card-body">-->
-<!--                        <table id="req-form" class="table overflow-auto" style="width: 100%;">-->
-<!--                            <thead>-->
-<!--                            <tr>-->
-<!--                                <th>Offer ID</th>-->
-<!--                                <th>Offer Date</th>-->
-<!--                                <th>Remarks</th>-->
-<!--                                <th>Name</th>-->
-<!--                                <th>Age</th>-->
-<!--                                <th>Occupation</th>-->
-<!--                                <th>Offer Status</th>-->
-<!--                                <th>Action</th>-->
-<!--                            </tr>-->
-<!--                            </thead>-->
-<!--                            <tbody>-->
-<!---->
-<!--                            --><?php
-//                            include "action/connection.php";
-//                            $query = ("SELECT * FROM request  INNER JOIN offer ON request.requestid = offer.requestid
-//                                        INNER JOIN volunteer ON offer.userid = volunteer.userid
-//                                        INNER JOIN user ON volunteer.userid = user.userid
-//                                        WHERE request.requestid = $viewid;");
-//
-//
-//
-//                            $result = mysqli_query($connect, $query);
-//
-//                            if ($result -> num_rows > 0) {
-//                                while($row = $result->fetch_assoc()) {
-//                                    echo '<tr>';
-//                                    echo '<td>'.$row["offerid"].'</td>';
-//                                    echo '<td>'.$row["offerdate"].'</td>';
-//                                    echo '<td>'.$row["remarks"].'</td>';
-//                                    echo '<td>'.$row["fullname"].'</td>';
-//                                    $datenow = date("Y-m-d");
-//                                    $agenow = date_diff(date_create($row["dateofbirth"]), date_create($datenow));
-//                                    echo '<td>'.$agenow->format('%y').'</td>';
-//                                    echo '<td>'.$row["occupation"].'</td>';
-//                                    echo '<td>'.$row["offerstatus"].'</td>';
-//                                    echo '<td><button type="button" class="btn btn-outline-info" onclick="acceptoffers('. $row["offersid"] .",'". $row["email"] ."')".';">View</button></td>';
-//
-//                                    echo '</tr>';
-//                                }
-//                            }
-//                            ?>
-<!--                            </tbody>-->
-<!---->
-<!--                        </table>-->
-<!--                    </div>-->
-                    <!--OFFER END-->
-
                 </div>
+
+
+
 
                 <!--FOOTER START-->
                 <footer class="bg-white sticky-footer">
