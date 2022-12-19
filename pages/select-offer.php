@@ -137,6 +137,19 @@ $viewid = $_GET['id'];
                                 <th>Offer ID</th>
                                 <th>Offer Status</th>
                                 <th>Action</th>
+
+                                <?php
+                                include "action/connection.php";
+                                $query = ("SELECT * FROM `request` WHERE requestid= $viewid ");
+                                $result = mysqli_query($connect, $query);
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        echo '<tr>';
+                                        echo '<td>' . $viewid . '</td>';
+                                        echo '<td>' . $row["description"] . '</td>';
+                                    }
+                                }
+                                ?>
                             </tr>
                             </thead>
                             <tbody>
@@ -144,19 +157,27 @@ $viewid = $_GET['id'];
                             <?php
                             include "../../connector/connector.php";
                             $query = ("SELECT * FROM request  INNER JOIN offer ON
-                                        request.requestid = offer.requestid INNER JOIN volunteer ON 
-                                            offer.userid = volunteer.userid INNER JOIN user ON 
-                                             volunteer.userid = user.userid WHERE request.requestid = $viewid;");
-//                            echo $viewid;
-                            $result = mysqli_query($connect, $query);
+                                             request.requestid = offer.idreqkey INNER JOIN volunteer ON 
+                                             offer.idkey = volunteer.idkey INNER JOIN user ON 
+                                             volunteer.idkey = user.id WHERE request.requestid = $viewid;");
+
+
+
+                            $result = mysqli_query($conn, $query);
 
                             if ($result -> num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-
                                     echo '<tr>';
-                                    echo '<td>'.$row["offerid"].'</td>';
+                                    echo '<td>'.$row["offersid"].'</td>';
+                                    echo '<td>'.$row["offerdate"].'</td>';
+                                    echo '<td>'.$row["remarks"].'</td>';
+                                    echo '<td>'.$row["fullname"].'</td>';
+                                    $datenow = date("Y-m-d");
+                                    $agenow = date_diff(date_create($row["dateofbirth"]), date_create($datenow));
+                                    echo '<td>'.$agenow->format('%y').'</td>';
+                                    echo '<td>'.$row["occupation"].'</td>';
                                     echo '<td>'.$row["offerstatus"].'</td>';
-
+                                    echo '<td><button type="button" class="btn btn-outline-primary" onclick="acceptoffers('. $row["offersid"] .",'". $row["email"] ."')".';">Accept</button></td>';
                                     echo '</tr>';
                                 }
                             }
