@@ -157,28 +157,45 @@ $viewid = $_GET['id'];
 
                             if ($result -> num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
+                                    $offerid = $row["offerid"];
+                                    $offerdate = $row["offerdate"];
+                                    $remarks = $row["remarks"];
+                                    $email = $row["email"];
+                                    $fullname = $row["fullname"];
+
                                     echo '<tr>';
                                     echo '<td>'.$row["offerid"].'</td>';
-                                    echo '<td>'.$row["offerstatus"].'</td>';
+                                    echo '<td>'.$row["offerdate"].'</td>';
                                     echo '<td>'.$row["remarks"].'</td>';
                                     echo '<td>'.$row["fullname"].'</td>';
                                     $datenow = date("Y-m-d");
                                     $agenow = date_diff(date_create($row["dateofbirth"]), date_create($datenow));
                                     echo '<td>'.$agenow->format('%y').'</td>';
                                     echo '<td>'.$row["occupation"].'</td>';
-//                                    echo '<td><button type="button" class="btn btn-outline-primary">Accept</button></td>';
-//                                    echo '<td><button type="button" class="btn btn-outline-danger">Close</button></td>';
                                 }
                             }
                             ?>
-                            <td>
-                                <a href="../confirm-vaccination/create.php?vaccinationID=<?php echo $row['vaccinationID']; ?>" class="btn btn-outline-info">Accept</a>
+                            <form method="POST" action="action/accept-offer.php">
+                                <input class="form-control" type="hidden" name="offerid" value="<?php echo $offerid;?>">
+                                <input class="form-control" type="hidden" name="remarks" value="<?php echo $remarks;?>">
+                                <input class="form-control" type="hidden" name="email" value="<?php echo $email;?>">
+                                <input class="form-control" type="hidden" name="fullname" value="<?php echo $fullname;?>">
+                                <input class="form-control" type="hidden" name="status" value="<?php echo $offerdate;?>">
 
-                                <a href="../record-vaccination-admin/create.php?vaccinationID=<?php echo $row['vaccinationID']; ?>" class="btn btn-outline-danger">Close</a>
-                            </td>
+                                <div class="form-group">
+                                    <td>
+                                        <input class="btn btn-outline-info" type="submit" value="Accept">
+                                        <a href="action/close-offer.php?offerid=<?php echo $offerid; ?>" class="btn btn-danger">Close</a>
+
+                                    </td>
+                                </div>
+                            </form>
+
+
 
                             </tbody>
                         </table>
+
                     </div>
 
                 </div>
