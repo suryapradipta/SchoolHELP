@@ -6,19 +6,6 @@ if ($_SESSION['loginas'] != 'administrator') {
 }
 
 $viewid = $_GET['id'];
-
-
-//include "action/connection.php";
-//$query = ("SELECT * FROM school WHERE schoolid='". $_SESSION['schoolid'] . "'");
-//
-//$result = mysqli_query($connect, $query);
-//if ($result->num_rows > 0) {
-//    while ($row = $result->fetch_assoc()) {
-//        $_SESSION['schoolname'] = $row["schoolname"];
-//        $_SESSION['address'] = $row["address"];
-//        $_SESSION['city'] = $row["city"];
-//    }
-//}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +39,6 @@ $viewid = $_GET['id'];
                 <li class="nav-item"><a class="nav-link " href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="submit-request.php"><i class="fas fa-hand-holding"></i><span>Submit Request</span></a></li>
                 <li class="nav-item"><a class="nav-link active" href="view-request-administrator.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
-
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
@@ -103,12 +89,15 @@ $viewid = $_GET['id'];
 
 
                                     <!--LOG OUT START-->
-                                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
+                                    <a class="dropdown-item"
+                                       href="#"
+                                       data-bs-toggle="modal"
+                                       data-bs-target="#logoutmodal">
                                         <i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>
                                         Logout
                                     </a>
-                                    <!--LOG OUT END-->
 
+                                    <!--LOG OUT END-->
 
                                 </div>
                             </div>
@@ -148,15 +137,16 @@ $viewid = $_GET['id'];
                             <?php
                             include "action/connection.php";
                             $query = ("SELECT * FROM request  
-                                        INNER JOIN offer ON request.requestid = offer.requestid 
-                                        INNER JOIN volunteer ON offer.userid = volunteer.userid 
-                                        INNER JOIN user ON volunteer.userid = user.userid 
-                                        WHERE offer.offerid = $viewid;");
+                                    INNER JOIN offer ON request.requestid = offer.requestid 
+                                    INNER JOIN volunteer ON offer.userid = volunteer.userid 
+                                    INNER JOIN user ON volunteer.userid = user.userid 
+                                    WHERE offer.offerid = $viewid;");
 
                             $result = mysqli_query($connect, $query);
 
                             if ($result -> num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
+                                    $requestid = $row["requestid"];
                                     $offerid = $row["offerid"];
                                     $offerdate = $row["offerdate"];
                                     $remarks = $row["remarks"];
@@ -175,6 +165,17 @@ $viewid = $_GET['id'];
                                 }
                             }
                             ?>
+
+
+                            <?php
+                            if (isset($_GET['offer-message'])) {
+                                if ($_GET['offer-message'] == "offer-success") {
+                                    echo "<div class='alert alert-success' role='alert'>Offer Accepted</div>";
+                                } else if ($_GET['offer-message'] == "offer-failed") {
+                                    echo "<div class='alert alert-danger' role='alert'>Offer Closed</div>";
+                                }
+                            }
+                            ?>
                             <form method="POST" action="action/accept-offer.php">
                                 <input class="form-control" type="hidden" name="offerid" value="<?php echo $offerid;?>">
                                 <input class="form-control" type="hidden" name="remarks" value="<?php echo $remarks;?>">
@@ -186,7 +187,6 @@ $viewid = $_GET['id'];
                                     <td>
                                         <input class="btn btn-outline-info" type="submit" value="Accept">
                                         <a href="action/close-offer.php?offerid=<?php echo $offerid; ?>" class="btn btn-danger">Close</a>
-
                                     </td>
                                 </div>
                             </form>
@@ -195,6 +195,7 @@ $viewid = $_GET['id'];
 
                             </tbody>
                         </table>
+                        <a href="select-request.php?id=<?php echo $requestid; ?>" class="btn btn-primary">Back</a>
 
                     </div>
 
@@ -260,8 +261,6 @@ $viewid = $_GET['id'];
                 });
             });
         </script>
-
-
 </body>
 
 </html>

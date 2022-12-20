@@ -6,17 +6,7 @@ if ($_SESSION['loginas'] != 'administrator') {
 }
 
 $viewid = $_GET['id'];
-//include "action/connection.php";
-//$query = ("SELECT * FROM school WHERE schoolid='". $_SESSION['schoolid'] . "'");
-//
-//$result = mysqli_query($connect, $query);
-//if ($result->num_rows > 0) {
-//    while ($row = $result->fetch_assoc()) {
-//        $_SESSION['schoolname'] = $row["schoolname"];
-//        $_SESSION['address'] = $row["address"];
-//        $_SESSION['city'] = $row["city"];
-//    }
-//}
+
 ?>
 
 <!DOCTYPE html>
@@ -128,7 +118,7 @@ $viewid = $_GET['id'];
                         <p class="text-primary m-0 fw-bold">Request Info</p>
                     </div>
                     <div class="card-body">
-                        <table id="req-form" class="table overflow-auto table-bordered" style="width: 100%;">
+                        <table id="select-request-id" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
                             <tr>
                                 <th>Request ID</th>
@@ -167,7 +157,7 @@ $viewid = $_GET['id'];
                     </div>
 
                     <div class="card-body">
-                        <table id="-" class="table overflow-auto table-bordered" style="width: 100%;">
+                        <table id="select-offer-id" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
                             <tr>
                                 <th>Offer ID</th>
@@ -203,6 +193,8 @@ $viewid = $_GET['id'];
                             ?>
                             </tbody>
                         </table>
+                        <a class="btn btn-primary" href="view-request-administrator.php">Back</a>
+
                     </div>
 
                 </div>
@@ -259,14 +251,19 @@ $viewid = $_GET['id'];
                 scrollY: 270,
                 scrollX: true,
             });
-
-
         </script>
 
         <script>
             $(document).ready(function () {
-                $('#req-form').DataTable({
-                    order: [[ 2, 'asc' ], [ 1, 'asc' ]]
+                $('#select-request-id').DataTable({
+                    order: [0, 'asc' ]
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('#select-offer-id').DataTable({
+                    order: [0, 'asc' ]
                 });
             });
         </script>
