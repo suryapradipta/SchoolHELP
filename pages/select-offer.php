@@ -185,7 +185,7 @@ $viewid = $_GET['id'];
 
                                 <div class="form-group">
                                     <td>
-                                        <input class="btn btn-outline-info" type="submit" value="Accept">
+                                        <input class="btn btn-outline-info" type="submit" value="Accept" name="send">
                                         <a href="action/close-offer.php?offerid=<?php echo $offerid; ?>" class="btn btn-danger">Close</a>
                                     </td>
                                 </div>
