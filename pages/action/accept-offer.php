@@ -14,10 +14,6 @@ $offerid = $_POST['offerid'];
 
 $sql = mysqli_query($connect, "UPDATE offer SET offerstatus = 'ACCEPTED' WHERE offerid = '$offerid'");
 
-
-
-
-
 $mail = new PHPMailer(true);
 try {
     $mail->isSMTP();
@@ -40,6 +36,13 @@ try {
 
     $mail->send();
     echo 'Message has been sent';
+
+//    echo "
+//    <script>
+//    alert('Sent successfully');
+//    document.location.href = '../select-offer.php';
+//    </script>
+//    ";
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
 }
