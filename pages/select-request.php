@@ -39,7 +39,7 @@ $viewid = $_GET['id'];
                 <li class="nav-item"><a class="nav-link" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link " href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="submit-request.php"><i class="fas fa-hand-holding"></i><span>Submit Request</span></a></li>
-                <li class="nav-item"><a class="nav-link active" href="view-request-administrator.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="review-offers.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
 
             </ul>
             <div class="text-center d-none d-md-inline">
@@ -115,7 +115,7 @@ $viewid = $_GET['id'];
 
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Request Info</p>
+                        <p class="text-primary m-0 fw-bold">Request Details</p>
                     </div>
                     <div class="card-body">
                         <table id="select-request-id" class="table overflow-auto table-bordered" style="width: 100%;">
@@ -153,7 +153,7 @@ $viewid = $_GET['id'];
                 <div class="card shadow">
 
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Offer Info</p>
+                        <p class="text-primary m-0 fw-bold">Offer Information</p>
                     </div>
 
                     <div class="card-body">
@@ -193,7 +193,7 @@ $viewid = $_GET['id'];
                             ?>
                             </tbody>
                         </table>
-                        <a class="btn btn-primary" href="view-request-administrator.php">Back</a>
+                        <a class="btn btn-primary" href="review-offers.php">Back</a>
 
                     </div>
 

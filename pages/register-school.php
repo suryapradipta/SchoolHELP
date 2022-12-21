@@ -12,7 +12,7 @@ if ($_SESSION['loginas'] != 'administrator') {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Table - Brand</title>
+    <title>Register School - SchoolHELP</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="../assets/bootstrap/css/dataTables.bootstrap5.min.css">
@@ -26,6 +26,7 @@ if ($_SESSION['loginas'] != 'administrator') {
 
 <body id="page-top">
 <div id="wrapper">
+    <!--NAVBAR START-->
     <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
         <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
                 <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-school"></i></div>
@@ -36,7 +37,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                 <li class="nav-item"><a class="nav-link" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link active" href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="submit-request.php"><i class="fas fa-hand-holding"></i><span>Submit Request</span></a></li>
-                <li class="nav-item"><a class="nav-link " href="view-request-administrator.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
+                <li class="nav-item"><a class="nav-link " href="review-offers.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
 
             </ul>
             <div class="text-center d-none d-md-inline">
@@ -44,6 +45,8 @@ if ($_SESSION['loginas'] != 'administrator') {
             </div>
         </div>
     </nav>
+    <!--NAVBAR END-->
+
     <div class="d-flex flex-column" id="content-wrapper">
         <div id="content">
 
@@ -77,15 +80,12 @@ if ($_SESSION['loginas'] != 'administrator') {
                                     <img class="border rounded-circle img-profile"
                                          src="../assets/img/avatars/avatar0.png">
                                 </a>
-
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
                                     <a class="dropdown-item" href="profile.php">
                                         <i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>
                                         Profile
                                     </a>
-
                                     <div class="dropdown-divider"></div>
-
 
                                     <!--LOG OUT START-->
                                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutmodal">
@@ -93,7 +93,6 @@ if ($_SESSION['loginas'] != 'administrator') {
                                         Logout
                                     </a>
                                     <!--LOG OUT END-->
-
 
                                 </div>
                             </div>
@@ -393,13 +392,19 @@ if ($_SESSION['loginas'] != 'administrator') {
             <script src="../assets/js/datatables.js"></script>
             <!--DATA TABLES END-->
 
+<!--            <script>-->
+<!--                $('#schoolinfotable').dataTable({-->
+<!--                    scrollY: 270,-->
+<!--                    scrollX: true,-->
+<!--                });-->
+<!--            </script>-->
+
             <script>
-                $('#schoolinfotable').dataTable({
-                    scrollY: 270,
-                    scrollX: true,
+                $(document).ready(function () {
+                    $('#schoolinfotable').DataTable({
+                        order: [0, 'asc' ]
+                    });
                 });
-
-
             </script>
 
             <!--HIDE AND SHOW FORM START-->
@@ -409,7 +414,6 @@ if ($_SESSION['loginas'] != 'administrator') {
                         $('#administrator-form').show();
                         $('#school-form').hide();
                     }
-
                 })
 
                 $('#form-school-display').click(function () {
@@ -418,10 +422,10 @@ if ($_SESSION['loginas'] != 'administrator') {
                         $('#school-form').show();
                     }
                 })
-
-
             </script>
             <!--HIDE AND SHOW FORM END-->
+
+
 
 
 </body>

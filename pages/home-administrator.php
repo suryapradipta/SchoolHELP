@@ -48,7 +48,7 @@ if ($_SESSION['loginas'] != 'administrator') {
                         <span>Submit Request</span>
                     </a>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="view-request-administrator.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="review-offers.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
 
 
             </ul>

@@ -38,7 +38,7 @@ $viewid = $_GET['id'];
                 <li class="nav-item"><a class="nav-link" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link " href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="submit-request.php"><i class="fas fa-hand-holding"></i><span>Submit Request</span></a></li>
-                <li class="nav-item"><a class="nav-link active" href="view-request-administrator.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
+                <li class="nav-item"><a class="nav-link active" href="review-offers.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
             </ul>
             <div class="text-center d-none d-md-inline">
                 <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
@@ -152,6 +152,7 @@ $viewid = $_GET['id'];
                                     $remarks = $row["remarks"];
                                     $email = $row["email"];
                                     $fullname = $row["fullname"];
+                                    $description = $row["description"];
 
                                     echo '<tr>';
                                     echo '<td>'.$row["offerid"].'</td>';
@@ -170,9 +171,9 @@ $viewid = $_GET['id'];
                             <?php
                             if (isset($_GET['offer-message'])) {
                                 if ($_GET['offer-message'] == "offer-success") {
-                                    echo "<div class='alert alert-success' role='alert'>Offer Accepted</div>";
-                                } else if ($_GET['offer-message'] == "offer-failed") {
-                                    echo "<div class='alert alert-danger' role='alert'>Offer Closed</div>";
+                                    echo "<div class='alert alert-success' role='alert'>Offer Accepted and an Email is Sent Successfully</div>";
+                                } else if ($_GET['offer-message'] == "offer-closed") {
+                                    echo "<div class='alert alert-success' role='alert'>Offer Closed Successfully</div>";
                                 }
                             }
                             ?>
@@ -181,7 +182,11 @@ $viewid = $_GET['id'];
                                 <input class="form-control" type="hidden" name="remarks" value="<?php echo $remarks;?>">
                                 <input class="form-control" type="hidden" name="email" value="<?php echo $email;?>">
                                 <input class="form-control" type="hidden" name="fullname" value="<?php echo $fullname;?>">
-                                <input class="form-control" type="hidden" name="status" value="<?php echo $offerdate;?>">
+                                <input class="form-control" type="hidden" name="offerdate" value="<?php echo $offerdate;?>">
+                                <input class="form-control" type="hidden" name="description" value="<?php echo $description;?>">
+                                <input class="form-control" type="hidden" name="datenow" value="<?php echo $datenow;?>">
+
+
 
                                 <div class="form-group">
                                     <td>
