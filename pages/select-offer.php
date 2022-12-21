@@ -116,7 +116,7 @@ $viewid = $_GET['id'];
                 <div class="card shadow">
                     <!--OFFER START-->
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 fw-bold">Offer Info</p>
+                        <p class="text-primary m-0 fw-bold">Offer Details</p>
                     </div>
 
                     <div class="card-body">
