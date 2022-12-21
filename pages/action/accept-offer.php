@@ -16,11 +16,11 @@ $offerdate = $_POST['offerdate'];
 $remarks = $_POST['remarks'];
 
 
-//$adminemail = $_SESSION['email'];
-$adminfullname = $_SESSION['adminfullname'];
+$adminfullname= $_POST['adminfullname'];
+$adminemail= $_POST['adminemail'];
 
-echo $adminfullname;
 
+echo $adminemail;
 
 $sql = mysqli_query($connect, "UPDATE offer SET offerstatus = 'ACCEPTED' WHERE offerid = '$offerid'");
 
@@ -51,6 +51,7 @@ try {
         $description Offer accepted with $adminfullname on $datenow. Please find the details below:
 
         Offer Details
+        ID: $offerid
         Description: $description
         Date: $offerdate
         Remarks: $remarks
@@ -68,39 +69,52 @@ try {
 } catch (Exception $e) {
     echo 'Message could not be sent. Mailer Error: ', $mailvolunteer->ErrorInfo;
 }
-//
-//$mailadministrator = new PHPMailer(true);
-//try {
-//    $mailadministrator->isSMTP();
-//    $mailadministrator->Host = 'smtp.gmail.com';
-//    $mailadministrator->SMTPAuth = true;
-//    $mailadministrator->Username = 'suryapradipta8@gmail.com';
-//    $mailadministrator->Password = 'oqtpvfhwyadwcrpi';
-//    $mailadministrator->SMTPSecure = 'ssl';
-//    $mailadministrator->Port = 465;
-//
-//    // Sender
-//    $mailadministrator->setFrom('suryapradipta8@gmail.com', 'The School HELP Team');
-//
-//    // Recipient
-//    $mailadministrator->addAddress($adminemail, $adminfullname);
-//
-//
-////Content
-//    $mailadministrator->isHTML(true);
-//    $mailadministrator->Subject = "Your ". $description . " Offer has been Accepted!";
-//    $bodyadministrator =  nl2br(
-//        "ADMIN
-//        ");
-//
-//    $mailadministrator->Body = $bodyadministrator;
-//
-//    $mailadministrator->send();
-//    echo 'Message has been sent';
-//
-//} catch (Exception $e) {
-//    echo 'Message could not be sent. Mailer Error: ', $mailadministrator->ErrorInfo;
-//}
+
+$mailadministrator = new PHPMailer(true);
+try {
+    $mailadministrator->isSMTP();
+    $mailadministrator->Host = 'smtp.gmail.com';
+    $mailadministrator->SMTPAuth = true;
+    $mailadministrator->Username = 'suryapradipta8@gmail.com';
+    $mailadministrator->Password = 'oqtpvfhwyadwcrpi';
+    $mailadministrator->SMTPSecure = 'ssl';
+    $mailadministrator->Port = 465;
+
+    // Sender
+    $mailadministrator->setFrom('suryapradipta8@gmail.com', 'The School HELP Team');
+
+    // Recipient
+    $mailadministrator->addAddress("$adminemail", $adminfullname);
+
+
+    //Content
+    $mailadministrator->isHTML(true);
+    $mailadministrator->Subject = "Your ". $description . " Offer has been Accepted!";
+    $bodyadministrator =  nl2br(
+        "Hi $adminfullname,
+
+        $description Offer accepted on $datenow. Please find the details below:
+
+        Offer Details
+        ID: $offerid
+        Name: $fullname
+        Description: $description
+        Date: $offerdate
+        Remarks: $remarks
+
+        Thank you for using SchoolHELP,
+
+        The SchoolHELP Team
+        ");
+
+    $mailadministrator->Body = $bodyadministrator;
+
+    $mailadministrator->send();
+    echo 'Message has been sent';
+
+} catch (Exception $e) {
+    echo 'Message could not be sent. Mailer Error: ', $mailadministrator->ErrorInfo;
+}
 
 header("location:../select-offer.php?offer-message=offer-success&id=$offerid");
 

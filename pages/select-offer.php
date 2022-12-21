@@ -186,6 +186,9 @@ $viewid = $_GET['id'];
                                 <input class="form-control" type="hidden" name="description" value="<?php echo $description;?>">
                                 <input class="form-control" type="hidden" name="datenow" value="<?php echo $datenow;?>">
 
+                                <input class="form-control" type="hidden" name="adminfullname" value="<?php echo $_SESSION["fullname"];?>">
+                                <input class="form-control" type="hidden" name="adminemail" value="<?php echo $_SESSION["email"];?>">
+
 
 
                                 <div class="form-group">
