@@ -172,8 +172,6 @@ $viewid = $_GET['id'];
                             if (isset($_GET['offer-message'])) {
                                 if ($_GET['offer-message'] == "offer-success") {
                                     echo "<div class='alert alert-success' role='alert'>Offer Accepted and an Email is Sent Successfully</div>";
-                                } else if ($_GET['offer-message'] == "offer-closed") {
-                                    echo "<div class='alert alert-success' role='alert'>Offer Closed Successfully</div>";
                                 }
                             }
                             ?>
@@ -194,7 +192,7 @@ $viewid = $_GET['id'];
                                 <div class="form-group">
                                     <td>
                                         <input class="btn btn-outline-info" type="submit" value="Accept" name="send">
-                                        <a href="action/close-offer.php?offerid=<?php echo $offerid; ?>" class="btn btn-danger">Close</a>
+<!--                                        <a href="action/close-offer.php?offerid=--><?php //echo $offerid; ?><!--" class="btn btn-danger">Close</a>-->
                                     </td>
                                 </div>
                             </form>

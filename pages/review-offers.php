@@ -115,10 +115,18 @@ if ($_SESSION['loginas'] != 'administrator') {
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Request Information</p>
                     </div>
+
                     <div class="card-body">
                         <table id="req-form" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
                             <tr>
+                                <?php
+                                if (isset($_GET['request-message'])) {
+                                    if ($_GET['request-message'] == "request-closed") {
+                                        echo "<div class='alert alert-success' role='alert'>Request Closed Successfully</div>";
+                                    }
+                                }
+                                ?>
                                 <th>ID</th>
                                 <th>Request Date</th>
                                 <th>Request Status</th>
@@ -138,11 +146,17 @@ if ($_SESSION['loginas'] != 'administrator') {
                                         echo '<td>' . $row["requestdate"] . '</td>';
                                         echo '<td>' . $row["requeststatus"] . '</td>';
 
-                                        echo '<td><button id="myInput" type="button" class="btn btn-outline-primary"
+                                        echo '<td>
+                                                    <button id="myInput" type="button" class="btn btn-outline-primary"
                                                             onclick="window.location.href='."'select-request?id=".$row["requestid"]."'".';">
                                                             View
-                                                  </button>
+                                                    </button>
+                                                    <button id="myInput" type="button" class="btn btn-outline-danger"
+                                                            onclick="window.location.href='."'action/close-request?id=".$row["requestid"]."'".';">
+                                                            Close
+                                                    </button>
                                               </td>';
+
                                         echo '</tr>';
                                     }
                                 }
