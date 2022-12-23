@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 21, 2022 at 03:51 PM
+-- Generation Time: Dec 23, 2022 at 02:35 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -28,12 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `offer` (
+  `offerid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `requestid` int(11) NOT NULL,
   `offerdate` date NOT NULL,
   `remarks` varchar(50) NOT NULL,
   `offerstatus` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `offer`
+--
+
+INSERT INTO `offer` (`offerid`, `userid`, `requestid`, `offerdate`, `remarks`, `offerstatus`) VALUES
+(3, 48, 7, '2022-12-23', 'I want to take part in this tutorial!', 'ACCEPTED');
 
 -- --------------------------------------------------------
 
@@ -49,6 +57,14 @@ CREATE TABLE `request` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `request`
+--
+
+INSERT INTO `request` (`schoolid`, `requestid`, `requestdate`, `requeststatus`, `description`) VALUES
+(2, 7, '2022-12-23', 'CLOSED', 'Tutorial Software Engineering'),
+(2, 8, '2022-12-23', 'NEW', 'Mobile Application Development Resource');
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +76,13 @@ CREATE TABLE `resourcerequest` (
   `resourcetype` varchar(30) NOT NULL,
   `numrequired` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `resourcerequest`
+--
+
+INSERT INTO `resourcerequest` (`requestid`, `resourcetype`, `numrequired`) VALUES
+(8, 'Mobile Device', 12);
 
 -- --------------------------------------------------------
 
@@ -80,11 +103,7 @@ CREATE TABLE `school` (
 
 INSERT INTO `school` (`schoolid`, `schoolname`, `address`, `city`) VALUES
 (1, 'HELP University', 'No. 15, Jalan Sri Semantan 1, Off, Jalan Semantan, Bukit Damansara, 50490 Kuala Lumpur, Malaysia', 'Kuala Lumpur'),
-(2, 'ITB Stikom Bali', 'Jl. Raya Puputan No.86, Dangin Puri Klod, Kec. Denpasar Tim., Kota Denpasar, Bali 80234\r\n', 'Denpasar'),
-(21, 'a', 'a', 'a'),
-(22, 'b', 'b', 'b'),
-(23, 'c', 'c', 'c'),
-(24, 'd', 'd', 'd');
+(2, 'ITB Stikom Bali', 'Jl. Raya Puputan No.86, Dangin Puri Klod, Kec. Denpasar Tim., Kota Denpasar, Bali 80234\r\n', 'Denpasar');
 
 -- --------------------------------------------------------
 
@@ -105,8 +124,7 @@ CREATE TABLE `schooladmin` (
 
 INSERT INTO `schooladmin` (`userid`, `schoolid`, `staffid`, `position`) VALUES
 (2, 2, 1, 'School Administrator'),
-(1, 1, 66, 'Admin');
--- (41, 24, 2424, '2424')
+(1, 1, 66, 'School HELP Administrator');
 
 -- --------------------------------------------------------
 
@@ -122,6 +140,13 @@ CREATE TABLE `tutorialrequest` (
   `numstudents` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tutorialrequest`
+--
+
+INSERT INTO `tutorialrequest` (`requestid`, `proposeddate`, `proposedtime`, `studentlevel`, `numstudents`) VALUES
+(7, '2022-12-31', '09:00', 'Degree', 15);
+
 -- --------------------------------------------------------
 
 --
@@ -130,8 +155,8 @@ CREATE TABLE `tutorialrequest` (
 
 CREATE TABLE `user` (
   `userid` int(11) NOT NULL,
-  `username` varchar(15) NOT NULL,
-  `password` varchar(15) NOT NULL,
+  `username` varchar(30) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `fullname` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL
@@ -142,10 +167,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `fullname`, `email`, `phone`) VALUES
-(1, 'HELP', 'a', 'HELP Admin', 'admin@help.com', '123'),
-(2, 'stikom', 'a', 'Admin Stikom', 'D@Stikom-bali.ac.id', '123456');
--- (3, 'c', 'c', 'volunteer', 'volunteer@gmail.com', '123124'),
--- (41, 'kk', 'kk', 'kk', 'kk@m.com', '242424')
+(1, 'schoolhelp', '786a90036a7c2f162673fbd349a4ecaa', 'SchoolHELP Administrator', 'schoolhelpadministrator@help.com', '081246038181'),
+(2, 'schooladmin', '6ce7e0f9cb84c0ccf426acb9dccc914e', 'School Administrator', 'inyomansuryapradipta@gmail.com', '081246038181'),
+(48, 'suryapradipta', '83948f560db85c81a385d73ca161c727', 'Surya Pradipta', 'suryapradipta.my@gmail.com', '081246038181');
 
 -- --------------------------------------------------------
 
@@ -156,15 +180,15 @@ INSERT INTO `user` (`userid`, `username`, `password`, `fullname`, `email`, `phon
 CREATE TABLE `volunteer` (
   `userid` int(11) NOT NULL,
   `dateofbirth` date NOT NULL,
-  `occupation` varchar(30) NOT NULL
+  `occupation` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `volunteer`
 --
 
--- INSERT INTO `volunteer` (`userid`, `dateofbirth`, `occupation`) VALUES
--- (3, '2022-11-08', 'tutor');
+INSERT INTO `volunteer` (`userid`, `dateofbirth`, `occupation`) VALUES
+(48, '2001-05-23', 'I would like to contribute!\r\n');
 
 --
 -- Indexes for dumped tables
@@ -174,8 +198,9 @@ CREATE TABLE `volunteer` (
 -- Indexes for table `offer`
 --
 ALTER TABLE `offer`
-  ADD PRIMARY KEY (`requestid`),
-  ADD KEY `userid` (`userid`);
+  ADD PRIMARY KEY (`offerid`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `requestid` (`requestid`) USING BTREE;
 
 --
 -- Indexes for table `request`
@@ -228,16 +253,22 @@ ALTER TABLE `volunteer`
 --
 
 --
+-- AUTO_INCREMENT for table `offer`
+--
+ALTER TABLE `offer`
+  MODIFY `offerid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `requestid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `requestid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `school`
 --
 ALTER TABLE `school`
-  MODIFY `schoolid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `schoolid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `schooladmin`
@@ -249,49 +280,7 @@ ALTER TABLE `schooladmin`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `offer`
---
-ALTER TABLE `offer`
-  ADD CONSTRAINT `offer_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `volunteer` (`userid`),
-  ADD CONSTRAINT `offer_ibfk_2` FOREIGN KEY (`requestid`) REFERENCES `request` (`requestid`);
-
---
--- Constraints for table `request`
---
-ALTER TABLE `request`
-  ADD CONSTRAINT `request_ibfk_1` FOREIGN KEY (`schoolid`) REFERENCES `school` (`schoolid`);
-
---
--- Constraints for table `resourcerequest`
---
-ALTER TABLE `resourcerequest`
-  ADD CONSTRAINT `resourcerequest_ibfk_1` FOREIGN KEY (`requestid`) REFERENCES `request` (`requestid`);
-
---
--- Constraints for table `schooladmin`
---
-ALTER TABLE `schooladmin`
-  ADD CONSTRAINT `schooladmin_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`),
-  ADD CONSTRAINT `schooladmin_ibfk_2` FOREIGN KEY (`schoolid`) REFERENCES `school` (`schoolid`);
-
---
--- Constraints for table `tutorialrequest`
---
-ALTER TABLE `tutorialrequest`
-  ADD CONSTRAINT `tutorialrequest_ibfk_1` FOREIGN KEY (`requestid`) REFERENCES `request` (`requestid`);
-
---
--- Constraints for table `volunteer`
---
-ALTER TABLE `volunteer`
-  ADD CONSTRAINT `volunteer_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`);
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
