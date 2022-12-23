@@ -112,7 +112,6 @@ $viewid = $_GET['id'];
             <!--CONTENT START-->
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">View Request</h3>
-
                 <div class="card shadow">
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Request Details</p>
@@ -123,7 +122,6 @@ $viewid = $_GET['id'];
                             <tr>
                                 <th>Request ID</th>
                                 <th>Request Description</th>
-
                             </tr>
                             </thead>
                             <tbody>
@@ -138,24 +136,19 @@ $viewid = $_GET['id'];
                                     echo '<td>' . $viewid . '</td>';
                                     echo '<td>' . $row["description"] . '</td>';
                                     echo '</tr>';
-
                                 }
                             }
                             ?>
                             </tbody>
                         </table>
                     </div>
-
                     <!--OFFER START-->
                 </div>
-
                 <br>
                 <div class="card shadow">
-
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Offer Information</p>
                     </div>
-
                     <div class="card-body">
                         <table id="select-offer-id" class="table overflow-auto table-bordered" style="width: 100%;">
                             <thead>
@@ -194,9 +187,7 @@ $viewid = $_GET['id'];
                             </tbody>
                         </table>
                         <a class="btn btn-primary" href="review-offers.php">Back</a>
-
                     </div>
-
                 </div>
 
 

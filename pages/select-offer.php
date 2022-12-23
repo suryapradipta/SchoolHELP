@@ -167,7 +167,6 @@ $viewid = $_GET['id'];
                             }
                             ?>
 
-
                             <?php
                             if (isset($_GET['offer-message'])) {
                                 if ($_GET['offer-message'] == "offer-success") {
@@ -183,28 +182,18 @@ $viewid = $_GET['id'];
                                 <input class="form-control" type="hidden" name="offerdate" value="<?php echo $offerdate;?>">
                                 <input class="form-control" type="hidden" name="description" value="<?php echo $description;?>">
                                 <input class="form-control" type="hidden" name="datenow" value="<?php echo $datenow;?>">
-
                                 <input class="form-control" type="hidden" name="adminfullname" value="<?php echo $_SESSION["fullname"];?>">
                                 <input class="form-control" type="hidden" name="adminemail" value="<?php echo $_SESSION["email"];?>">
-
-
-
                                 <div class="form-group">
                                     <td>
                                         <input class="btn btn-outline-info" type="submit" value="Accept" name="send">
-<!--                                        <a href="action/close-offer.php?offerid=--><?php //echo $offerid; ?><!--" class="btn btn-danger">Close</a>-->
                                     </td>
                                 </div>
                             </form>
-
-
-
                             </tbody>
                         </table>
                         <a href="select-request.php?id=<?php echo $requestid; ?>" class="btn btn-primary">Back</a>
-
                     </div>
-
                 </div>
 
                 <!--FOOTER START-->

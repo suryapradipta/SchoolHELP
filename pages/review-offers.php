@@ -36,7 +36,13 @@ if ($_SESSION['loginas'] != 'administrator') {
                 <li class="nav-item"><a class="nav-link" href="home-administrator.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
                 <li class="nav-item"><a class="nav-link " href="register-school.php"><i class="fas fa-file-medical"></i><span>Register School</span></a></li>
                 <li class="nav-item"><a class="nav-link" href="submit-request.php"><i class="fas fa-hand-holding"></i><span>Submit Request</span></a></li>
-                <li class="nav-item"><a class="nav-link active" href="review-offers.php"><i class="fas fa-user"></i><span>View Request</span></a></li>
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       href="review-offers.php">
+                        <i class="fas fa-user"></i>
+                        <span>View Request</span>
+                    </a>
+                </li>
 
             </ul>
             <div class="text-center d-none d-md-inline">
@@ -110,8 +116,6 @@ if ($_SESSION['loginas'] != 'administrator') {
             <div class="container-fluid">
                 <h3 class="text-dark mb-4">View Request</h3>
                 <div class="card shadow">
-
-
                     <div class="card-header py-3">
                         <p class="text-primary m-0 fw-bold">Request Information</p>
                     </div>
@@ -163,11 +167,8 @@ if ($_SESSION['loginas'] != 'administrator') {
                             }
                             ?>
                             </tbody>
-
                         </table>
                     </div>
-
-
                 </div>
 
                     <!--FOOTER START-->
