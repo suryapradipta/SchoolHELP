@@ -92,7 +92,7 @@ $query = "SELECT * FROM `school` INNER JOIN request ON school.schoolid =
                                         <?php echo $_SESSION['fullname']; ?>
                                     </span>
                                     <img class="border rounded-circle img-profile"
-                                         src="../assets/img/avatars/avatar1.jpeg">
+                                         src="../assets/img/avatars/avatar0.png">
                                 </a>
                                 <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
                                     <a class="dropdown-item" href="profile.php">
