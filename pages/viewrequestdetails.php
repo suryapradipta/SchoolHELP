@@ -44,7 +44,7 @@ $query = "SELECT * FROM `school` INNER JOIN request ON school.schoolid =
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Dashboard - Brand</title>
+    <title>View Request</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/datatables.css">
@@ -196,7 +196,7 @@ $query = "SELECT * FROM `school` INNER JOIN request ON school.schoolid =
             </div>
             <footer class="bg-white sticky-footer">
                 <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2022</span></div>
+                    <div class="text-center my-auto copyright"><span>Copyright © SCHOOLHELP 2022</span></div>
                 </div>
             </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
