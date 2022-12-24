@@ -113,7 +113,7 @@ $viewid = $_GET['id'];
 
             <!--CONTENT START-->
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">View Request</h3>
+                <h3 class="text-dark mb-4">View Offer</h3>
                 <div class="card shadow">
                     <!--OFFER START-->
                     <div class="card-header py-3">
