@@ -17,6 +17,7 @@ $schools = mysqli_query($connect, "SELECT * FROM school");
 $numofschool = mysqli_num_rows($schools);
 ?>
 <head>
+    <link rel="icon" type="image/x-icon" href="../../assets/img/icon32x32.png">
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
