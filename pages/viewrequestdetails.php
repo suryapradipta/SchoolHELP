@@ -44,6 +44,7 @@ $query = "SELECT * FROM `school` INNER JOIN request ON school.schoolid =
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="icon" type="image/x-icon" href="../assets/img/icon32x32.png">
     <title>View Request</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/bootstrap/css/dataTables.bootstrap5.min.css">
