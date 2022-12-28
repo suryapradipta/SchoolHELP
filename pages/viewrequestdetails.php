@@ -233,7 +233,7 @@ $query = "SELECT * FROM `school` INNER JOIN request ON school.schoolid =
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> <!--Submit button-->
                         <button class="btn btn-primary" type="submit" value="<?php echo $viewid; ?>" name="input">Submit</button>
                     </div>
                 </form>
