@@ -218,9 +218,7 @@ $query = "SELECT * FROM `school` INNER JOIN request ON school.schoolid =
     <!--LOG OUT MODAL END-->
 
     <!--Submit offer modal-->
-    <div class="modal fade" id="submit" 
-    tabindex="-1" 
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="submit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
              <div class="modal-content">
                 <div class="modal-header">
